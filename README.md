@@ -1,6 +1,8 @@
 # Hyrax Regression Tests
 
-Currently these tests deopend on a Hyrax server running on localhost:8080 to function.
+Currently these tests depend on:
+* A Hyrax server running on localhost:8080
+* The programs `getdap` and `getdap4`
 
 ## Build
 
