@@ -1,0 +1,4 @@
+Error { 
+    code = 400;
+    message = "libdap error transmitting DDS: Constraint expression parse error: No such identifier in dataset: k";
+}
