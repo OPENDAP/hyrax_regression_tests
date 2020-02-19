@@ -1,4 +1,0 @@
-Error { 
-    code = 400;
-    message = "libdap error transmitting DataDDS: Constraint expression parse error: syntax error";
-}

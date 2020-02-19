@@ -1,3 +1,0 @@
-Dataset {
-    Int16 u[time_a = 16][lat = 17][lon = 21];
-} fnoc1.nc;

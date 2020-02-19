@@ -3,7 +3,7 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.63)
 
-AC_INIT(hyrax-regression-tests, 0.0.0, support@opendap.org)
+AC_INIT(hyrax_regression_tests, 0.0.0, support@opendap.org)
 AC_CONFIG_SRCDIR([configure.ac])
 
 dnl This tells autoconf/make to use the directory 'conf' to hold
@@ -35,16 +35,12 @@ dnl   [with_dap_modules=yes])
 dnl Example automake/Makefile.am conditional
 dnl AM_CONDITIONAL([DAP_MODULES], [test x$with_dap_modules = xyes])
 
-dnl These are tests that only apply if the modules are being built too.
-dnl AM_COND_IF([DAP_MODULES], [
-
-AC_CONFIG_FILES([
- hyrax_tests/Makefile hyrax_tests/atlocal])
+AC_CONFIG_FILES([Makefile atlocal])
 
 dnl Parameter two is used as the value of AUTOTEST_PATH when the 
 dnl shell script built from the *.at file is run. That script will
 dnl look for executables using $PATH and $AUTOTEST_PATH.
-AC_CONFIG_TESTDIR(hyrax_tests, [$abs_top_builddir])
+AC_CONFIG_TESTDIR([.], [$abs_top_builddir])
 
 AC_OUTPUT
 

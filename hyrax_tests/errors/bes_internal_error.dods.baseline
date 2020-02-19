@@ -1,4 +1,0 @@
-Error { 
-    code = 500;
-    message = "A BESInternalError was requested.";
-}

@@ -1,4 +1,0 @@
-Error { 
-    code = 404;
-    message = "A BESNotFoundError was requested.";
-}

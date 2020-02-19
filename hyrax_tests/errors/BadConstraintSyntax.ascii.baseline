@@ -1,4 +1,0 @@
-Error { 
-    code = 400;
-    message = "Failed to get values as ascii: Constraint expression parse error: syntax error";
-}
