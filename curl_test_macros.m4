@@ -59,7 +59,8 @@ m4_define([PATCH_SERVER_NAME], [dnl
 #
 # Basic test using diff  Response output should be text!!
 #
-# Usage: AT_CURL_RESPONSE_TEST(test, baseline, [xfail|xpass])
+# Usage: AT_CURL_RESPONSE_TEST(test, [xfail|xpass])
+# The baseline for 'test' must be in 'test.baseline'
 # If arg #3 is not given, assume xpass
 
 m4_define([AT_CURL_RESPONSE_TEST], [dnl
@@ -75,7 +76,6 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K -], [0], [stdout])
         PATCH_HYRAX_RELEASE([stdout])
         PATCH_SERVER_NAME([stdout])
-
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
@@ -83,7 +83,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 	    PATCH_HYRAX_RELEASE([stdout])
 	    PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
-        AT_XFAIL_IF([test "$3" = "xfail"])
+        AT_XFAIL_IF([test "$2" = "xfail"])
         ])
 
     AT_CLEANUP
@@ -93,7 +93,8 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 #
 # DAP2 Data response test
 #
-# Usage: AT_CURL_DAP2_DATA_RESPONSE_TEST(test, baseline, [xfail|xpass])
+# Usage: AT_CURL_DAP2_DATA_RESPONSE_TEST(test, [xfail|xpass])
+# The baseline for 'test' must be in 'test.baseline'
 # If arg #3 is not given, assume xpass
 
 m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
@@ -114,7 +115,7 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K - | getdap -Ms -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
-        AT_XFAIL_IF([test "$3" = "xfail"])
+        AT_XFAIL_IF([test "$2" = "xfail"])
         ])
 
     AT_CLEANUP
@@ -124,7 +125,8 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 #
 # DAP4 Data response test
 #
-# Usage: AT_CURL_DAP4_DATA_RESPONSE_TEST(test, baseline, [xfail|xpass])
+# Usage: AT_CURL_DAP4_DATA_RESPONSE_TEST(test, [xfail|xpass])
+# The baseline for 'test' must be in 'test.baseline'
 # If arg #3 is not given, assume xpass
 
 m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
@@ -145,7 +147,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K - | getdap4  -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
-        AT_XFAIL_IF([test "$3" = "xfail"])
+        AT_XFAIL_IF([test "$2" = "xfail"])
         ])
 
     AT_CLEANUP
@@ -155,7 +157,8 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 #
 # ASCII Regex test
 #
-# Usage: AT_CURL_RESPONSE_PATTERN_MATCH_TEST(test, baseline, [xfail|xpass])
+# Usage: AT_CURL_RESPONSE_PATTERN_MATCH_TEST(test, [xfail|xpass])
+# The baseline for 'test' must be in 'test.baseline'
 # If arg #3 is not given, assume xpass
 
 m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
@@ -176,7 +179,7 @@ m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([grep -f $baseline stdout], [0], [ignore])
-        AT_XFAIL_IF([test "$3" = "xfail"])
+        AT_XFAIL_IF([test "$2" = "xfail"])
         ])
 
     AT_CLEANUP
@@ -187,7 +190,8 @@ m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 # ASCII Compare PLUS Check HTTP Header using REGEX
 # The http_header baseline MUST be edited to make a correct regular expression
 #
-# Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(test, baseline, [xfail|xpass])
+# Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(test, [xfail|xpass])
+# The baseline for 'test' must be in 'test.baseline'
 # If arg #3 is not given, assume xpass
 
 m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
@@ -197,20 +201,21 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
     input=$abs_srcdir/$1
     baseline=$abs_srcdir/$1.baseline
+    http_header=http_header$$
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
-        REMOVE_DATE_HEADER([http_header])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
+        REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
-        AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
+        AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
-        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
-        REMOVE_DATE_HEADER([http_header])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
+        REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
-        AT_CHECK([grep -f $baseline.http_header http_header], [0], [ignore])
-        AT_XFAIL_IF([test "$3" = "xfail"])
+        AT_CHECK([grep -f $baseline.http_header $http_header], [0], [ignore])
+        AT_XFAIL_IF([test "$2" = "xfail"])
         ])
 
     AT_CLEANUP
@@ -223,7 +228,8 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 # ASCII Compare PLUS Check HTTP Header using REGEX
 # The http_header baseline MUST be edited to make a correct regular expression
 #
-# Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(test, baseline, [xfail|xpass])
+# Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(test, [xfail|xpass])
+# The baseline for 'test' must be in 'test.baseline'
 # If arg #3 is not given, assume xpass
 # The test will only be run if the --besdev option is set to 'yes'
 
@@ -234,21 +240,22 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
 
     input=$abs_srcdir/$1
     baseline=$abs_srcdir/$1.baseline
+    http_header=http_header$$
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
-        REMOVE_DATE_HEADER([http_header])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
+        REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
-        AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
+        AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
         AT_SKIP_IF([test x$besdev = xno])
-        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
-        REMOVE_DATE_HEADER([http_header])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
+        REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
-        AT_CHECK([grep -f $baseline.http_header http_header], [0], [ignore])
-        AT_XFAIL_IF([test "$3" = "xfail" ])
+        AT_CHECK([grep -f $baseline.http_header $http_header], [0], [ignore])
+        AT_XFAIL_IF([test "$2" = "xfail" ])
         ])
 
     AT_CLEANUP
