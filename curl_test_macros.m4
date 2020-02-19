@@ -26,37 +26,8 @@ AT_ARG_OPTION_ARG([server],
     [echo "server set to $at_arg_server"; SERVER=$at_arg_server],
     [echo "server default localhost:8080"; SERVER=localhost:8080])
 
-
-# Usage: _AT_TEST_*(<bescmd source>, <baseline file>, <xpass/xfail> [default is xpass])
-
-dnl Given a filename, remove any date-time string of the form "yyyy-mm-dd hh:mm:ss" 
-dnl in that file and put "removed date-time" in its place. This hack keeps the baselines
-dnl more or less true to form without the obvious issue of baselines being broken 
-dnl one second after they are written.
-dnl  
-dnl Note that the macro depends on the baseline being a file.
-dnl
-dnl jhrg 6/3/16
-dnl
-dnl The regex was insufficient for time and hyrax version I have improved it.
-dnl Here's the new regex with out the mad escaping.
-dnl
-dnl [0-9]{4}-[0-9]{2}-[0-9]{2}(\s|T)[0-9]{2}:[0-9]{2}:[0-9]{2}(\.\d+)?\s?(((\+|-)\d+)|(\D{1,5}))|(OPeNDAP Hyrax \([@0-9a-zA-Z.]+\))
-dnl
-dnl ndp 09/16/18
-dnl
-dnl sed does not support \d (and decimal digit) or \D (amd non-digit). I also removed the 'OPeNDAP
-dnl Hyrax...' bit since we can use the PATH_HYRAX_RELEASE to remove the release information.
-dnl
-dnl NOTE: This is not currently used. jhrg 9/18/18
-dnl
-dnl m4_define([REMOVE_DATE_TIME], [dnl
-dnl     sed 's@[[0-9]]\{4\}-[[0-9]]\{2\}-[[0-9]]\{2\}\(\s|T\)[[0-9]]\{2\}:[[0-9]]\{2\}:[[0-9]]\{2\}\(\.[[0-9]]+\)?\s?\(\(\(\+|-\)[[0-9]]+\)|\([[^0-9]]\{1,5\}\)\)@removed date-time@g' < $1 > $1.sed
-dnl    dnl ' Added the preceding quote to quiet the Eclipse syntax checker. jhrg 3.2.18
-dnl    mv $1.sed $1
-dnl ])
-dnl
-
+dnl We need to remove the Date: HTTP header from both baselines and responses
+dnl since it varies over time.
 
 m4_define([REMOVE_DATE_HEADER], [dnl
     sed 's/^Date:.*$/Date: REMOVED/g' < $1 > $1.sed
@@ -254,6 +225,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 #
 # Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(test, baseline, [xfail|xpass])
 # If arg #3 is not given, assume xpass
+# The test will only be run if the --besdev option is set to 'yes'
 
 m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
 
@@ -271,11 +243,12 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
         AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
+        AT_SKIP_IF([test x$besdev = xno])
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_CHECK([grep -f $baseline.http_header http_header], [0], [ignore])
-        AT_XFAIL_IF([test "$3" = "xfail" -o x$besdev = xno])
+        AT_XFAIL_IF([test "$3" = "xfail" ])
         ])
 
     AT_CLEANUP
