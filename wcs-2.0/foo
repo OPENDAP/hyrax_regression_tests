@@ -1,0 +1,23 @@
+url = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=DescribeCoverage&coverageId=ECMWF_ERA-40_subset.ncml
+-s
+
+
+url = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=GetCoverage&coverageId=ECMWF_ERA-40_subset.ncml&format=application/x-netcdf-cf1.0
+-s
+url = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=DescribeCoverage&coverageId=200803061600_HFRadar_USEGC_6km_rtv_SIO.nc
+-s
+url = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=GetCoverage&coverageId=200803061600_HFRadar_USEGC_6km_rtv_SIO.nc&format=application/x-netcdf-cf1.0
+-surl = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=GetCoverage&coverageId=200803061600_HFRadar_USEGC_6km_rtv_SIO.nc&format=application/x-netcdf-cf1.0
+-s
+url = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=DescribeCoverage&coverageId=SF_1in100.nc
+-s
+
+
+url = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=GetCoverage&coverageId=newSF_1in100.nc&format=application/x-netcdf-cf1.0&subset=time("1")
+-s
+url = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=DescribeCoverage&coverageId=ncep_model_example
+-s
+
+
+url = http://localhost:8080/WCS-2.0?service=WCS&version=2.0.1&request=GetCoverage&coverageId=ncep_model_example&format=application/x-netcdf-cf1.0&subset=time("1")
+-s
