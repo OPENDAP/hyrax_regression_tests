@@ -17,8 +17,6 @@ before_install:
 - docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
 - docker ps -a
 
-- ./configure
-
 before_script:
   - autoreconf --force --install --verbose
   
