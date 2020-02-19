@@ -1,0 +1,7 @@
+# In test URL below, parameters are encoded to be allowed by Tomcat instances fixed for CVE-2016-6816.
+# url = http://@SERVER@/opendap/data/ff/1998-6-avhrr.dat.das?DODS_URL&date_time("1998/160:17:45:00")
+url = http://@SERVER@/opendap/data/ff/1998-6-avhrr.dat.das
+--data-urlencode "DODS_URL"
+--data-urlencode "date_time(\"1998/160:17:45:00\")"
+-G
+-s

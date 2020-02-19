@@ -1,0 +1,34 @@
+dist: trusty
+
+language: cpp
+
+compiler: gcc
+
+branches:
+  only:
+  - master
+  - travis
+
+services:
+  - docker
+
+before_install:
+- docker pull opendap/hyrax:snapshot
+- docker run -h hyrax -p 8080:8080 --name=hyrax_container hyrax_image -n http://localhost:8080
+- docker ps -a
+
+- ./configure
+
+before_script:
+  - autoreconf --force --install --verbose
+  
+stages:
+  - name: test
+    if:  branch = master OR branch = travis
+
+jobs:
+  include:
+  - stage: test
+    script: 
+    - ./configure
+    - make check

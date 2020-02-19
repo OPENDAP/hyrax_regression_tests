@@ -1,0 +1,2 @@
+url = http://@SERVER@/opendap/data/hdf4/S2000415.HDF.gz.dds
+-s

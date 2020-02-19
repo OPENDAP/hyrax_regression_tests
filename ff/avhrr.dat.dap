@@ -1,0 +1,2 @@
+url = http://@SERVER@/opendap/data/ff/avhrr.dat.dap
+-s

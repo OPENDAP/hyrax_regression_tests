@@ -1,0 +1,835 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!--
+~ /////////////////////////////////////////////////////////////////////////////
+~ // This file is part of the "Hyrax Data Server" project.
+~ //
+~ //
+~ // Copyright (c) 2018 OPeNDAP, Inc.
+~ // Author: Nathan David Potter <ndp@opendap.org>
+~ //
+~ // This library is free software; you can redistribute it and/or
+~ // modify it under the terms of the GNU Lesser General Public
+~ // License as published by the Free Software Foundation; either
+~ // version 2.1 of the License, or (at your option) any later version.
+~ //
+~ // This library is distributed in the hope that it will be useful,
+~ // but WITHOUT ANY WARRANTY; without even the implied warranty of
+~ // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+~ // Lesser General Public License for more details.
+~ //
+~ // You should have received a copy of the GNU Lesser General Public
+~ // License along with this library; if not, write to the Free Software
+~ // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301
+~ //
+~ // You can contact OPeNDAP, Inc. at PO Box 112, Saunderstown, RI. 02874-0112.
+~ /////////////////////////////////////////////////////////////////////////////
+        --><xhtml xmlns:dap="http://xml.opendap.org/ns/DAP/4.0#">
+   <head>
+      <link rel="stylesheet" href="/opendap/docs/css/collapse.css" type="text/css"/>
+      <link rel="stylesheet" href="/opendap/docs/css/contents.css" type="text/css"/>
+      <link rel="stylesheet" href="/opendap/docs/css/treeView.css" type="text/css"/>
+      <script type="text/javascript" src="/opendap/js/CollapsibleLists.js"> </script>
+      <script type="text/javascript" src="/opendap/js/dap4_buttons.js"> </script>
+      <script type="text/javascript">
+                    DAP4_URL = new dap4_url("http://@SERVER@/opendap/data/nc/bears.nc");
+                    DEBUG = new debug_obj();
+                    var es = "false";
+                    enforce_selection = es.localeCompare("true")==0;
+                </script>
+      <title>DAP4 Data Request Form (beta)bears.nc</title>
+   </head>
+   <body>
+      <table width="100%" border="0">
+         <tr>
+            <td>
+               <img alt="OPeNDAP Logo" src="/opendap/docs/images/logo.png"/>
+            </td>
+            <td>
+               <div class="large">OPeNDAP Data Access Form</div>
+            </td>
+         </tr>
+      </table>
+      <h1>
+         <span style="font-size: 12px;  vertical-align: 35%; font-weight: normal;">dataset:</span>
+         <span style="font-size: 20px;  vertical-align: 15%; font-weight: normal;">bears.nc</span>
+      </h1>
+      <hr size="1" noshade="noshade"/>
+      <form action="">
+         <table width="100%" border="0">
+            <tr>
+               <td align="right">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#disposition"
+                        target="help">
+                        Actions
+                    </a>
+                  </div>
+               </td>
+               <td>
+                  <div style="width:100%;margin-left:10px;">
+                     <input type="button" value="Get as CSV"
+                            onclick="getAs_button_action('CSV Data','.dap.csv')"/>
+                     <input type="button" value="Get as NetCDF 3"
+                            onclick="getAs_button_action('NetCDF-3 Data', '.dap.nc')"/>
+                     <input type="button" value="Get as NetCDF 4"
+                            onclick="getAs_button_action('NetCDF-4 Data', '.dap.nc4')"/>
+                     <input type="button" value="DAP4 Binary Object"
+                            onclick="getAs_button_action('DAP4 Data', '.dap')"/>
+                     <input type="button" value="DAP2 Binary Object"
+                            onclick="getAs_button_action('DAP2 Data', '.dods')"/>
+                     <input type="button" value="Show Help" onclick="help_button()"/>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td align="right">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#data_url"
+                        target="help">
+                        Data URL
+                    </a>
+                  </div>
+               </td>
+               <td>
+                  <input name="url" type="text" style="width:98%;margin-left:10;"
+                         value="http://@SERVER@/opendap/data/nc/bears.nc"/>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <hr size="1" noshade="noshade" width="80%"/>
+               </td>
+               <td>
+                  <hr size="1" noshade="noshade" width="100%"/>
+               </td>
+            </tr>
+            <tr>
+               <td align="right" style="vertical-align:text-top">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#global_attr"
+                        target="help">
+                        Global Attributes
+                    </a>
+                  </div>
+               </td>
+               <td width="100%">
+                  <div style="width:100%;margin-left:10px;">
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NC_GLOBAL</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">history:
+                        </span>
+                                       <span class="em">This is an example of a multi-line global\012attribute.  It could be used for representing the\012processing history of the data, for example.</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">DODS_EXTRA</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Unlimited_Dimension:
+                        </span>
+                                       <span class="em">k</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <hr size="1" noshade="noshade" width="80%"/>
+               </td>
+               <td>
+                  <hr size="1" noshade="noshade" width="100%"/>
+               </td>
+            </tr>
+            <tr>
+               <td align="right" style="vertical-align:text-top">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#shared_dimesions"
+                        target="help">Global Dimensions
+                    </a>
+                  </div>
+               </td>
+               <td>
+                  <div style="margin-left:25px;">
+                     <span class="large">[
+            <span class="medium_italic" style="vertical-align: 10%;font-size: 12px;">i =
+                </span>
+                        <span class="medium_italic" style="vertical-align: 10%;">0..1</span>
+            ]
+        </span>
+                     <span class="large">[
+            <span class="medium_italic" style="vertical-align: 10%;font-size: 12px;">j =
+                </span>
+                        <span class="medium_italic" style="vertical-align: 10%;">0..2</span>
+            ]
+        </span>
+                     <span class="large">[
+            <span class="medium_italic" style="vertical-align: 10%;font-size: 12px;">l =
+                </span>
+                        <span class="medium_italic" style="vertical-align: 10%;">0..2</span>
+            ]
+        </span>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <hr size="1" noshade="noshade" width="80%"/>
+               </td>
+               <td>
+                  <hr size="1" noshade="noshade" width="100%"/>
+               </td>
+            </tr>
+            <tr>
+               <td align="right" style="vertical-align:text-top">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#dataset_variables"
+                        target="help">Variables
+                    </a>
+                  </div>
+               </td>
+               <td>
+                  <div style="margin-left:25px;"><!--
+            - - - - - - - - - - -
+            myFQN:           i
+            myJSVarName:     org_opendap_var_d7e9
+            checkBoxName:    get_org_opendap_var_d7e9
+            isContainer:     false
+            isArray:         true
+            position:        1
+            parentContainer: 
+            - - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e9 = new dap_var("i", "org_opendap_var_d7e9", true,false);
+
+            
+                DAP4_URL.add_dap_var(org_opendap_var_d7e9);
+            org_opendap_var_d7e9.checkBox = "get_org_opendap_var_d7e9";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e9"
+                               onclick="org_opendap_var_d7e9.handle_projection_change(get_org_opendap_var_d7e9)"
+                               onfocus="describe_projection()"/>i<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">i=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>1]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Int32)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e9_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e9.addDimension(org_opendap_var_d7e9_dim_1,2);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">attr1:
+                        </span>
+                                       <span class="em">1</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">attr2:
+                        </span>
+                                       <span class="em">1, 2, 3, 4</span>
+                                    </div>
+                                 </li>
+                                 <ul class="collapsibleList">
+                                    <li>
+                                       <div class="tightView">
+                                          <div class="small_bold">i_1</div>
+                                          <ul>
+                                             <li>
+                                                <div class="small">
+                                                   <span class="bold">attr3_1:
+                        </span>
+                                                   <span class="em">17</span>
+                                                </div>
+                                             </li>
+                                             <li>
+                                                <div class="small">
+                                                   <span class="bold">attr3_2:
+                        </span>
+                                                   <span class="em">19, 23, 27</span>
+                                                </div>
+                                             </li>
+                                          </ul>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+            - - - - - - - - - - -
+            myFQN:           j
+            myJSVarName:     org_opendap_var_d7e56
+            checkBoxName:    get_org_opendap_var_d7e56
+            isContainer:     false
+            isArray:         true
+            position:        2
+            parentContainer: 
+            - - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e56 = new dap_var("j", "org_opendap_var_d7e56", true,false);
+
+            
+                DAP4_URL.add_dap_var(org_opendap_var_d7e56);
+            org_opendap_var_d7e56.checkBox = "get_org_opendap_var_d7e56";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e56"
+                               onclick="org_opendap_var_d7e56.handle_projection_change(get_org_opendap_var_d7e56)"
+                               onfocus="describe_projection()"/>j<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">j=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>2]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Float32)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e56_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e56.addDimension(org_opendap_var_d7e56_dim_1,3);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                     <!--
+            - - - - - - - - - - -
+            myFQN:           bears
+            myJSVarName:     org_opendap_var_d7e62
+            checkBoxName:    get_org_opendap_var_d7e62
+            isContainer:     false
+            isArray:         true
+            position:        3
+            parentContainer: 
+            - - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e62 = new dap_var("bears", "org_opendap_var_d7e62", true,false);
+
+            
+                DAP4_URL.add_dap_var(org_opendap_var_d7e62);
+            org_opendap_var_d7e62.checkBox = "get_org_opendap_var_d7e62";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e62"
+                               onclick="org_opendap_var_d7e62.handle_projection_change(get_org_opendap_var_d7e62)"
+                               onfocus="describe_projection()"/>bears<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">i=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>1]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">j=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>2]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is String)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e62_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e62.addDimension(org_opendap_var_d7e62_dim_1,2);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e62_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e62.addDimension(org_opendap_var_d7e62_dim_2,3);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">act:
+                        </span>
+                                       <span class="em">text string\012\011123</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">acs:
+                        </span>
+                                       <span class="em">-40</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">acl:
+                        </span>
+                                       <span class="em">17000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">acf:
+                        </span>
+                                       <span class="em">-2.00000000, 1.00000000, 0.00000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">acd:
+                        </span>
+                                       <span class="em">-1.000000000000000, 0.7500000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">string_length:
+                        </span>
+                                       <span class="em">3</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+            - - - - - - - - - - -
+            myFQN:           order
+            myJSVarName:     org_opendap_var_d7e119
+            checkBoxName:    get_org_opendap_var_d7e119
+            isContainer:     false
+            isArray:         true
+            position:        4
+            parentContainer: 
+            - - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e119 = new dap_var("order", "org_opendap_var_d7e119", true,false);
+
+            
+                DAP4_URL.add_dap_var(org_opendap_var_d7e119);
+            org_opendap_var_d7e119.checkBox = "get_org_opendap_var_d7e119";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e119"
+                               onclick="org_opendap_var_d7e119.handle_projection_change(get_org_opendap_var_d7e119)"
+                               onfocus="describe_projection()"/>order<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">i=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>1]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">j=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>2]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Int16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e119_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e119.addDimension(org_opendap_var_d7e119_dim_1,2);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e119_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e119.addDimension(org_opendap_var_d7e119_dim_2,3);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                     <!--
+            - - - - - - - - - - -
+            myFQN:           shot
+            myJSVarName:     org_opendap_var_d7e130
+            checkBoxName:    get_org_opendap_var_d7e130
+            isContainer:     false
+            isArray:         true
+            position:        5
+            parentContainer: 
+            - - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e130 = new dap_var("shot", "org_opendap_var_d7e130", true,false);
+
+            
+                DAP4_URL.add_dap_var(org_opendap_var_d7e130);
+            org_opendap_var_d7e130.checkBox = "get_org_opendap_var_d7e130";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e130"
+                               onclick="org_opendap_var_d7e130.handle_projection_change(get_org_opendap_var_d7e130)"
+                               onfocus="describe_projection()"/>shot<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">i=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>1]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">j=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>2]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Int32)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e130_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e130.addDimension(org_opendap_var_d7e130_dim_1,2);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e130_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e130.addDimension(org_opendap_var_d7e130_dim_2,3);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                     <!--
+            - - - - - - - - - - -
+            myFQN:           aloan
+            myJSVarName:     org_opendap_var_d7e141
+            checkBoxName:    get_org_opendap_var_d7e141
+            isContainer:     false
+            isArray:         true
+            position:        6
+            parentContainer: 
+            - - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e141 = new dap_var("aloan", "org_opendap_var_d7e141", true,false);
+
+            
+                DAP4_URL.add_dap_var(org_opendap_var_d7e141);
+            org_opendap_var_d7e141.checkBox = "get_org_opendap_var_d7e141";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e141"
+                               onclick="org_opendap_var_d7e141.handle_projection_change(get_org_opendap_var_d7e141)"
+                               onfocus="describe_projection()"/>aloan<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">i=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>1]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">j=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>2]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Float32)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e141_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e141.addDimension(org_opendap_var_d7e141_dim_1,2);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e141_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e141.addDimension(org_opendap_var_d7e141_dim_2,3);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                     <!--
+            - - - - - - - - - - -
+            myFQN:           cross
+            myJSVarName:     org_opendap_var_d7e152
+            checkBoxName:    get_org_opendap_var_d7e152
+            isContainer:     false
+            isArray:         true
+            position:        7
+            parentContainer: 
+            - - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e152 = new dap_var("cross", "org_opendap_var_d7e152", true,false);
+
+            
+                DAP4_URL.add_dap_var(org_opendap_var_d7e152);
+            org_opendap_var_d7e152.checkBox = "get_org_opendap_var_d7e152";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e152"
+                               onclick="org_opendap_var_d7e152.handle_projection_change(get_org_opendap_var_d7e152)"
+                               onfocus="describe_projection()"/>cross<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">i=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>1]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">j=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>2]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Float64)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e152_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e152.addDimension(org_opendap_var_d7e152_dim_1,2);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e152_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e152.addDimension(org_opendap_var_d7e152_dim_2,3);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                     <!--
+            - - - - - - - - - - -
+            myFQN:           l
+            myJSVarName:     org_opendap_var_d7e163
+            checkBoxName:    get_org_opendap_var_d7e163
+            isContainer:     false
+            isArray:         true
+            position:        8
+            parentContainer: 
+            - - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e163 = new dap_var("l", "org_opendap_var_d7e163", true,false);
+
+            
+                DAP4_URL.add_dap_var(org_opendap_var_d7e163);
+            org_opendap_var_d7e163.checkBox = "get_org_opendap_var_d7e163";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e163"
+                               onclick="org_opendap_var_d7e163.handle_projection_change(get_org_opendap_var_d7e163)"
+                               onfocus="describe_projection()"/>l<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">l=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>2]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Int16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e163_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP4_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e163.addDimension(org_opendap_var_d7e163_dim_1,3);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                  </div>
+               </td>
+            </tr>
+         </table>
+         <hr size="1" noshade="noshade"/>
+         <table width="100%" border="0">
+            <tr>
+               <td class="small">
+                  <input type="checkbox" id="debug_checkbox"/>debug
+                                <script type="text/javascript">
+                                    DEBUG.setCheckBox(debug_checkbox);
+                                </script>
+               </td>
+               <td>
+                  <div class="small" align="right">Hyrax development sponsored by
+                                    <a href="http://www.nsf.gov/">NSF</a>,
+                                    <a href="http://www.nasa.gov/">NASA</a>, and
+                                    <a href="http://www.noaa.gov/">NOAA</a>
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </form>
+      <h3>OPeNDAP Hyrax (Not.A.Release)
+                    <div>
+            <a href="/opendap/docs/">Documentation</a>
+            <span class="small"
+                  style="font-weight: normal; display: inline; float: right; padding-right: 10px;">
+               <a href="mailto:support@opendap.org?subject=Hyrax Usage Question&amp;body=%0A%0A%0A%0A%0A# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --%0A# %0A# We're sorry you had a problem using the server.%0A# Please use the space above to describe what you%0A# were trying to do and we will try to assist you.%0A# Thanks,%0A# OPeNDAP Support.%0A# %0A# -- -- -- hyrax location info, please include -- -- --%0A# %0A# request_url: http://@SERVER@/opendap/hyrax/data/nc/bears.nc.dmr.html%0A# protocol: HTTP/1.1%0A# server: localhost%0A# port: 8080%0A# javax.servlet.forward.request_uri: /opendap/data/nc/bears.nc.dmr.html%0A# query_string: n/a%0A# status: 200%0A# %0A# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --%0A">Questions? Contact Support</a>
+            </span>
+         </div>
+      </h3>
+      <script type="application/ld+json">
+{
+  "@context": {
+    "@vocab": "http://schema.org"
+  },
+  "@type": "Dataset",
+  "name": "bears.nc",
+  "url": "http://@SERVER@/opendap/data/nc/bears.nc",
+  "includedInDataCatalog": { 
+    "@type": "DataCatalog", 
+    "name": "Hyrax Data Server", 
+    "sameAs": "http://@SERVER@/opendap/hyrax/data/nc/contents.html"
+  },
+  "variableMeasured": [
+  {
+    "@type": "PropertyValue",
+    "name": "http://@SERVER@/opendap/data/nc/bears.nc",
+    "valueReference": [ 
+        {
+          "@type": "PropertyValue", 
+          "name": "history", 
+          "value": "This is an example of a multi-line global\\012attribute.  It could be used for representing the\\012processing history of the data, for example."        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Unlimited_Dimension", 
+          "value": "k"        }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "i",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "size", 
+        "value": "2"      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "j",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "size", 
+        "value": "3"      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "l",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "size", 
+        "value": "3"      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "i",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "attr1", 
+        "value": "1"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "attr2", 
+        "value": [ "1", "2", "3", "4" ]      },
+        {
+          "@type": "PropertyValue", 
+          "name": "attr3_1", 
+          "value": "17"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "attr3_2", 
+          "value": [ "19", "23", "27" ]        }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "j",
+    "valueReference": [ 
+
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "bears",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "act", 
+        "value": "text string\\012\\011123"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "acs", 
+        "value": "-40"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "acl", 
+        "value": "17000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "acf", 
+        "value": [ "-2.00000000", "1.00000000", "0.00000000" ]      },
+      {
+        "@type": "PropertyValue", 
+        "name": "acd", 
+        "value": [ "-1.000000000000000", "0.7500000000000000" ]      },
+      {
+        "@type": "PropertyValue", 
+        "name": "string_length", 
+        "value": "3"      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "order",
+    "valueReference": [ 
+
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "shot",
+    "valueReference": [ 
+
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "aloan",
+    "valueReference": [ 
+
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "cross",
+    "valueReference": [ 
+
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "l",
+    "valueReference": [ 
+
+    ]
+  }
+  ]
+}
+</script>
+   </body>
+   <script type="text/javascript">
+                CollapsibleLists.apply(true);
+                initCollapsibles("/opendap/docs");
+            </script>
+</xhtml>

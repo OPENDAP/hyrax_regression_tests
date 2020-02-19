@@ -1,0 +1,4036 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!--
+~ /////////////////////////////////////////////////////////////////////////////
+~ // This file is part of the "Hyrax Data Server" project.
+~ //
+~ //
+~ // Copyright (c) 2018 OPeNDAP, Inc.
+~ // Author: Nathan David Potter <ndp@opendap.org>
+~ //
+~ // This library is free software; you can redistribute it and/or
+~ // modify it under the terms of the GNU Lesser General Public
+~ // License as published by the Free Software Foundation; either
+~ // version 2.1 of the License, or (at your option) any later version.
+~ //
+~ // This library is distributed in the hope that it will be useful,
+~ // but WITHOUT ANY WARRANTY; without even the implied warranty of
+~ // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+~ // Lesser General Public License for more details.
+~ //
+~ // You should have received a copy of the GNU Lesser General Public
+~ // License along with this library; if not, write to the Free Software
+~ // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301
+~ //
+~ // You can contact OPeNDAP, Inc. at PO Box 112, Saunderstown, RI. 02874-0112.
+~ /////////////////////////////////////////////////////////////////////////////
+        --><xhtml xmlns:dap="http://xml.opendap.org/ns/DAP/3.2#">
+   <head>
+      <link rel="stylesheet" href="/opendap/docs/css/collapse.css" type="text/css"/>
+      <link rel="stylesheet" href="/opendap/docs/css/contents.css" type="text/css"/>
+      <link rel="stylesheet" href="/opendap/docs/css/treeView.css" type="text/css"/>
+      <script type="text/javascript">
+                    DOCS_SERVICE="/opendap/docs";
+                </script>
+      <script type="text/javascript" src="/opendap/js/CollapsibleLists.js"> </script>
+      <script type="text/javascript" src="/opendap/js/dap2_buttons.js"> </script>
+      <script type="text/javascript">
+                    DAP2_URL = new dap2_url("http://@SERVER@/opendap/data/hdf4/S2000415.HDF.gz");
+                    DEBUG = new debug_obj();
+                    var es = "false";
+                    enforce_selection = es.localeCompare("true")==0;
+                </script>
+      <title>OPeNDAP Data Access Form for  S2000415.HDF</title>
+   </head>
+   <body>
+      <table width="100%" border="0">
+         <tr>
+            <td>
+               <img alt="OPeNDAP Logo" src="/opendap/docs/images/logo.png"/>
+            </td>
+            <td>
+               <div class="small_italic" style="padding-bottom: 5px;">Welcome to the new</div>
+               <div class="large" style="padding-bottom: 5px;">OPeNDAP Data Access Form</div>
+               <div class="small_italic" style="padding-bottom: 5px;">
+                  <a href="http://@SERVER@/opendap/data/hdf4/S2000415.HDF.gz.html_old">The old form can be found here...</a>
+               </div>
+            </td>
+         </tr>
+      </table>
+      <h1>
+         <span style="font-size: 12px;  vertical-align: 35%; font-weight: normal;">dataset:</span>
+         <span style="font-size: 20px;  vertical-align: 15%; font-weight: normal;">S2000415.HDF</span>
+      </h1>
+      <hr size="1" noshade="noshade"/>
+      <form action="">
+         <table width="100%" border="0">
+            <tr>
+               <td align="right">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#disposition"
+                        target="help">
+                        Actions
+                    </a>
+                  </div>
+               </td>
+               <td>
+                  <div style="width:100%;margin-left:10px;">
+                     <input type="button" value="Get as ASCII"
+                            onclick="getAs_button_action('ASCII Data','.ascii')"/>
+                     <input type="button" value="Get as CoverageJSON"
+                            onclick="getAs_button_action('CoverageJSON Data', '.covjson')"/>
+                     <input type="button" value="Get as NetCDF 3"
+                            onclick="getAs_button_action('NetCDF-3 Data', '.nc')"/>
+                     <input type="button" value="Get as NetCDF 4"
+                            onclick="getAs_button_action('NetCDF-4 Data', '.nc4')"/>
+                     <input type="button" value="Binary (DAP) Object"
+                            onclick="getAs_button_action('DAP2 Data', '.dods')"/>
+                     <input type="button" value="Show Help" onclick="help_button()"/>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td align="right">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#data_url"
+                        target="help">
+                        Data URL
+                    </a>
+                  </div>
+               </td>
+               <td>
+                  <input name="url" type="text" style="width:98%;margin-left:10;"
+                         value="http://@SERVER@/opendap/data/hdf4/S2000415.HDF.gz"/>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <hr size="1" noshade="noshade" width="95%"/>
+               </td>
+               <td>
+                  <hr size="1" noshade="noshade" width="100%"/>
+               </td>
+            </tr>
+            <tr>
+               <td align="right" style="vertical-align:text-top">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#global_attr"
+                        target="help">
+                        Global Attributes
+                    </a>
+                  </div>
+               </td>
+               <td width="100%">
+                  <div style="width:100%;margin-left:10px;">
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">HDF_GLOBAL</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Producer_Agency:
+                        </span>
+                                       <span class="em">NASA</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Producer_Institution:
+                        </span>
+                                       <span class="em">JPL</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Sensor_Name:
+                        </span>
+                                       <span class="em">NSCAT</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Project_ID:
+                        </span>
+                                       <span class="em">NSCAT</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">SIS_ID:
+                        </span>
+                                       <span class="em">597-512-24/1996-07-01</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Build_ID:
+                        </span>
+                                       <span class="em">3.2.1/1996-11-05</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">ADEOS_Data_Package_ID:
+                        </span>
+                                       <span class="em">S2</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">ADEOS_Data_Package_Type:
+                        </span>
+                                       <span class="em">S</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Product_Creation_Time:
+                        </span>
+                                       <span class="em">1996-318T01:35:16.000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Data_Type:
+                        </span>
+                                       <span class="em">L2</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Data_Status:
+                        </span>
+                                       <span class="em">COMPLETE</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">First_Rev_Number:
+                        </span>
+                                       <span class="em">415</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">First_Rev_Eq_Crossing_Time:
+                        </span>
+                                       <span class="em">1996-259T04:01:28.226</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">First_Rev_Eq_Crossing_Lon:
+                        </span>
+                                       <span class="em">279.9830017</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">First_Data_Time:
+                        </span>
+                                       <span class="em">1996-259T03:43:48.945</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Last_Data_Time:
+                        </span>
+                                       <span class="em">1996-259T05:09:48.997</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Num_Expected_Output_Records:
+                        </span>
+                                       <span class="em">458</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Num_Actual_Output_Records:
+                        </span>
+                                       <span class="em">458</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Ambig_Removal_Method:
+                        </span>
+                                       <span class="em">Baseline used</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">HDF_Build_ID:
+                        </span>
+                                       <span class="em">JPL D-xxxxx 12/15/94</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">HDF_SIS_ID:
+                        </span>
+                                       <span class="em">JPL D-12060 12/15/94</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">HDF_Conversion_Organization:
+                        </span>
+                                       <span class="em">JPL PO.DAAC</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">HDF_Conversion_Time:
+                        </span>
+                                       <span class="em">1996-320T17:32:34       </span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">Data_Format_Type:
+                        </span>
+                                       <span class="em">HDF</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_WVC_Lat_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_WVC_Lat_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_WVC_Lon_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_WVC_Lon_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Sigma0_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Sigma0_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Beam_12_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Beam_12_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Beam_34_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Beam_34_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Beam_56_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Beam_56_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Beam_78_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Beam_78_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_WVC_Quality_Flag_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_WVC_Quality_Flag_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Mean_Wind_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Mean_Wind_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Wind_Speed_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Wind_Speed_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Wind_Speed_dim_2</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">position of the ambiguities</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">position</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Wind_Dir_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Wind_Dir_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Wind_Dir_dim_2</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">position of the ambiguities</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">position</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Error_Speed_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Error_Speed_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Error_Speed_dim_2</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">position of the ambiguities</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">position</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Error_Dir_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Error_Dir_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Error_Dir_dim_2</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">position of the ambiguities</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">position</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_MLE_Likelihood_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_MLE_Likelihood_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_MLE_Likelihood_dim_2</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">position of the ambiguities</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">position</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Ambigs_dim_0</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC row</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">row</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <ul class="collapsibleList">
+                        <li>
+                           <div class="tightView">
+                              <div class="small_bold">NSCAT_Rev_20_Num_Ambigs_dim_1</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC index</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">name:
+                        </span>
+                                       <span class="em">WVC</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                     <li>
+                        <div class="small">
+                           <span class="bold">NSCAT_Rev_20_SwathIndex:
+                        </span>
+                           <span class="em"/>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="small">
+                           <span class="bold">NSCAT_Rev_20_NSCAT_L2:
+                        </span>
+                           <span class="em"/>
+                        </div>
+                     </li>
+                  </div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <hr size="1" noshade="noshade" width="95%"/>
+               </td>
+               <td>
+                  <hr size="1" noshade="noshade" width="100%"/>
+               </td>
+            </tr>
+            <tr>
+               <td align="right" style="vertical-align:text-top">
+                  <div class="medium_bold">
+                     <a href="http://www.opendap.org/online_help_files/opendap_form_help.html#dataset_variables"
+                        target="help">Variables
+                    </a>
+                  </div>
+               </td>
+               <td>
+                  <div style="margin-left:25px;"><!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_WVC_Lat
+            myJSVarName:     org_opendap_var_d7e689
+            checkBoxName:    get_org_opendap_var_d7e689
+            isContainer:     false
+            isArray:         true
+            myType:          Int16
+            position:        1
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e689 = new dap_var("NSCAT_Rev_20_WVC_Lat", "org_opendap_var_d7e689", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e689);
+            org_opendap_var_d7e689.checkBox = "get_org_opendap_var_d7e689";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e689"
+                               onclick="org_opendap_var_d7e689.handle_projection_change(get_org_opendap_var_d7e689)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_WVC_Lat<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Int16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e689_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e689.addDimension(org_opendap_var_d7e689_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e689_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e689.addDimension(org_opendap_var_d7e689_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">latitude</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">deg</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">0.010000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">22</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">-9000, 7771</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_WVC_Lon
+            myJSVarName:     org_opendap_var_d7e750
+            checkBoxName:    get_org_opendap_var_d7e750
+            isContainer:     false
+            isArray:         true
+            myType:          UInt16
+            position:        2
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e750 = new dap_var("NSCAT_Rev_20_WVC_Lon", "org_opendap_var_d7e750", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e750);
+            org_opendap_var_d7e750.checkBox = "get_org_opendap_var_d7e750";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e750"
+                               onclick="org_opendap_var_d7e750.handle_projection_change(get_org_opendap_var_d7e750)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_WVC_Lon<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is UInt16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e750_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e750.addDimension(org_opendap_var_d7e750_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e750_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e750.addDimension(org_opendap_var_d7e750_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">longitude</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">deg</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">0.010000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">22</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 31242</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Num_Sigma0
+            myJSVarName:     org_opendap_var_d7e811
+            checkBoxName:    get_org_opendap_var_d7e811
+            isContainer:     false
+            isArray:         true
+            myType:          Byte
+            position:        3
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e811 = new dap_var("NSCAT_Rev_20_Num_Sigma0", "org_opendap_var_d7e811", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e811);
+            org_opendap_var_d7e811.checkBox = "get_org_opendap_var_d7e811";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e811"
+                               onclick="org_opendap_var_d7e811.handle_projection_change(get_org_opendap_var_d7e811)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Num_Sigma0<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Byte)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e811_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e811.addDimension(org_opendap_var_d7e811_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e811_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e811.addDimension(org_opendap_var_d7e811_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">The total number of sigma-0 measurements</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">counts</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">1.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">21</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 19</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Num_Beam_12
+            myJSVarName:     org_opendap_var_d7e873
+            checkBoxName:    get_org_opendap_var_d7e873
+            isContainer:     false
+            isArray:         true
+            myType:          Byte
+            position:        4
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e873 = new dap_var("NSCAT_Rev_20_Num_Beam_12", "org_opendap_var_d7e873", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e873);
+            org_opendap_var_d7e873.checkBox = "get_org_opendap_var_d7e873";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e873"
+                               onclick="org_opendap_var_d7e873.handle_projection_change(get_org_opendap_var_d7e873)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Num_Beam_12<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Byte)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e873_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e873.addDimension(org_opendap_var_d7e873_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e873_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e873.addDimension(org_opendap_var_d7e873_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">The total number of sigma-0s received from beam 1 or 2</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">counts</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">1.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">21</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 6</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Num_Beam_34
+            myJSVarName:     org_opendap_var_d7e934
+            checkBoxName:    get_org_opendap_var_d7e934
+            isContainer:     false
+            isArray:         true
+            myType:          Byte
+            position:        5
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e934 = new dap_var("NSCAT_Rev_20_Num_Beam_34", "org_opendap_var_d7e934", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e934);
+            org_opendap_var_d7e934.checkBox = "get_org_opendap_var_d7e934";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e934"
+                               onclick="org_opendap_var_d7e934.handle_projection_change(get_org_opendap_var_d7e934)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Num_Beam_34<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Byte)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e934_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e934.addDimension(org_opendap_var_d7e934_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e934_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e934.addDimension(org_opendap_var_d7e934_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">The total number of sigma-0s received from beam 3 or 4</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">counts</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">1.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">21</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 6</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Num_Beam_56
+            myJSVarName:     org_opendap_var_d7e995
+            checkBoxName:    get_org_opendap_var_d7e995
+            isContainer:     false
+            isArray:         true
+            myType:          Byte
+            position:        6
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e995 = new dap_var("NSCAT_Rev_20_Num_Beam_56", "org_opendap_var_d7e995", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e995);
+            org_opendap_var_d7e995.checkBox = "get_org_opendap_var_d7e995";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e995"
+                               onclick="org_opendap_var_d7e995.handle_projection_change(get_org_opendap_var_d7e995)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Num_Beam_56<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Byte)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e995_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e995.addDimension(org_opendap_var_d7e995_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e995_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e995.addDimension(org_opendap_var_d7e995_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">The total number of sigma-0s received from beam 5 or 6</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">counts</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">1.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">21</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 6</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Num_Beam_78
+            myJSVarName:     org_opendap_var_d7e1056
+            checkBoxName:    get_org_opendap_var_d7e1056
+            isContainer:     false
+            isArray:         true
+            myType:          Byte
+            position:        7
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1056 = new dap_var("NSCAT_Rev_20_Num_Beam_78", "org_opendap_var_d7e1056", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1056);
+            org_opendap_var_d7e1056.checkBox = "get_org_opendap_var_d7e1056";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1056"
+                               onclick="org_opendap_var_d7e1056.handle_projection_change(get_org_opendap_var_d7e1056)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Num_Beam_78<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Byte)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1056_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1056.addDimension(org_opendap_var_d7e1056_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1056_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1056.addDimension(org_opendap_var_d7e1056_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">The total number of sigma-0s received from beam 7 or 8</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">counts</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">1.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">21</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 6</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_WVC_Quality_Flag
+            myJSVarName:     org_opendap_var_d7e1117
+            checkBoxName:    get_org_opendap_var_d7e1117
+            isContainer:     false
+            isArray:         true
+            myType:          Byte
+            position:        8
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1117 = new dap_var("NSCAT_Rev_20_WVC_Quality_Flag", "org_opendap_var_d7e1117", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1117);
+            org_opendap_var_d7e1117.checkBox = "get_org_opendap_var_d7e1117";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1117"
+                               onclick="org_opendap_var_d7e1117.handle_projection_change(get_org_opendap_var_d7e1117)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_WVC_Quality_Flag<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Byte)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1117_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1117.addDimension(org_opendap_var_d7e1117_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1117_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1117.addDimension(org_opendap_var_d7e1117_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">WVC Quality Flag</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">1.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">21</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 3</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Mean_Wind
+            myJSVarName:     org_opendap_var_d7e1172
+            checkBoxName:    get_org_opendap_var_d7e1172
+            isContainer:     false
+            isArray:         true
+            myType:          UInt16
+            position:        9
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1172 = new dap_var("NSCAT_Rev_20_Mean_Wind", "org_opendap_var_d7e1172", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1172);
+            org_opendap_var_d7e1172.checkBox = "get_org_opendap_var_d7e1172";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1172"
+                               onclick="org_opendap_var_d7e1172.handle_projection_change(get_org_opendap_var_d7e1172)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Mean_Wind<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is UInt16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1172_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1172.addDimension(org_opendap_var_d7e1172_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1172_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1172.addDimension(org_opendap_var_d7e1172_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">Mean Wind Speed</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">m/s</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">0.010000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">23</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 2374</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Wind_Speed
+            myJSVarName:     org_opendap_var_d7e1234
+            checkBoxName:    get_org_opendap_var_d7e1234
+            isContainer:     false
+            isArray:         true
+            myType:          UInt16
+            position:        10
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1234 = new dap_var("NSCAT_Rev_20_Wind_Speed", "org_opendap_var_d7e1234", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1234);
+            org_opendap_var_d7e1234.checkBox = "get_org_opendap_var_d7e1234";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1234"
+                               onclick="org_opendap_var_d7e1234.handle_projection_change(get_org_opendap_var_d7e1234)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Wind_Speed<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">position=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>3]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is UInt16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1234_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1234.addDimension(org_opendap_var_d7e1234_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1234_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1234.addDimension(org_opendap_var_d7e1234_dim_2,24);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1234_dim_3" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1234.addDimension(org_opendap_var_d7e1234_dim_3,4);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">Wind speed associated with a WVC</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">m/s</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">0.010000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">23</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 2571</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Wind_Dir
+            myJSVarName:     org_opendap_var_d7e1298
+            checkBoxName:    get_org_opendap_var_d7e1298
+            isContainer:     false
+            isArray:         true
+            myType:          UInt16
+            position:        11
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1298 = new dap_var("NSCAT_Rev_20_Wind_Dir", "org_opendap_var_d7e1298", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1298);
+            org_opendap_var_d7e1298.checkBox = "get_org_opendap_var_d7e1298";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1298"
+                               onclick="org_opendap_var_d7e1298.handle_projection_change(get_org_opendap_var_d7e1298)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Wind_Dir<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">position=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>3]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is UInt16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1298_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1298.addDimension(org_opendap_var_d7e1298_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1298_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1298.addDimension(org_opendap_var_d7e1298_dim_2,24);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1298_dim_3" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1298.addDimension(org_opendap_var_d7e1298_dim_3,4);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">Wind direction solution associated with a WVC</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">deg</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">0.010000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">23</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 35997</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Error_Speed
+            myJSVarName:     org_opendap_var_d7e1362
+            checkBoxName:    get_org_opendap_var_d7e1362
+            isContainer:     false
+            isArray:         true
+            myType:          UInt16
+            position:        12
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1362 = new dap_var("NSCAT_Rev_20_Error_Speed", "org_opendap_var_d7e1362", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1362);
+            org_opendap_var_d7e1362.checkBox = "get_org_opendap_var_d7e1362";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1362"
+                               onclick="org_opendap_var_d7e1362.handle_projection_change(get_org_opendap_var_d7e1362)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Error_Speed<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">position=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>3]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is UInt16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1362_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1362.addDimension(org_opendap_var_d7e1362_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1362_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1362.addDimension(org_opendap_var_d7e1362_dim_2,24);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1362_dim_3" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1362.addDimension(org_opendap_var_d7e1362_dim_3,4);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">Uncertainty estimated for the wind speed value</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">m/s</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">0.010000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">23</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 2410</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Error_Dir
+            myJSVarName:     org_opendap_var_d7e1426
+            checkBoxName:    get_org_opendap_var_d7e1426
+            isContainer:     false
+            isArray:         true
+            myType:          UInt16
+            position:        13
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1426 = new dap_var("NSCAT_Rev_20_Error_Dir", "org_opendap_var_d7e1426", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1426);
+            org_opendap_var_d7e1426.checkBox = "get_org_opendap_var_d7e1426";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1426"
+                               onclick="org_opendap_var_d7e1426.handle_projection_change(get_org_opendap_var_d7e1426)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Error_Dir<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">position=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>3]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is UInt16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1426_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1426.addDimension(org_opendap_var_d7e1426_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1426_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1426.addDimension(org_opendap_var_d7e1426_dim_2,24);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1426_dim_3" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1426.addDimension(org_opendap_var_d7e1426_dim_3,4);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">Uncertainty estimated for the wind direction value</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">deg</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">0.010000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">23</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 2435</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_MLE_Likelihood
+            myJSVarName:     org_opendap_var_d7e1490
+            checkBoxName:    get_org_opendap_var_d7e1490
+            isContainer:     false
+            isArray:         true
+            myType:          Int16
+            position:        14
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1490 = new dap_var("NSCAT_Rev_20_MLE_Likelihood", "org_opendap_var_d7e1490", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1490);
+            org_opendap_var_d7e1490.checkBox = "get_org_opendap_var_d7e1490";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1490"
+                               onclick="org_opendap_var_d7e1490.handle_projection_change(get_org_opendap_var_d7e1490)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_MLE_Likelihood<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">position=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>3]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Int16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1490_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1490.addDimension(org_opendap_var_d7e1490_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1490_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1490.addDimension(org_opendap_var_d7e1490_dim_2,24);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1490_dim_3" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1490.addDimension(org_opendap_var_d7e1490_dim_3,4);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">Relative likelihood that a given win vector solution is correct</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">0.10000000000000001</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">22</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">-32768, 2825</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           NSCAT_Rev_20_Num_Ambigs
+            myJSVarName:     org_opendap_var_d7e1547
+            checkBoxName:    get_org_opendap_var_d7e1547
+            isContainer:     false
+            isArray:         true
+            myType:          Byte
+            position:        15
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1547 = new dap_var("NSCAT_Rev_20_Num_Ambigs", "org_opendap_var_d7e1547", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1547);
+            org_opendap_var_d7e1547.checkBox = "get_org_opendap_var_d7e1547";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1547"
+                               onclick="org_opendap_var_d7e1547.handle_projection_change(get_org_opendap_var_d7e1547)"
+                               onfocus="describe_projection()"/>NSCAT_Rev_20_Num_Ambigs<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">row=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="medium">[
+                <span class="small" style="vertical-align: 15%;">WVC=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>23]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Byte)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1547_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1547.addDimension(org_opendap_var_d7e1547_dim_1,458);
+            </script>
+                     <input type="text" id="org_opendap_var_d7e1547_dim_2" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1547.addDimension(org_opendap_var_d7e1547_dim_2,24);
+            </script>
+                     <div class="tightView">
+                        <ul class="collapsibleList">
+                           <li>
+                              <div class="small_bold" style="color:#527CC1;">attributes</div>
+                              <ul>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">long_name:
+                        </span>
+                                       <span class="em">Number of ambiguous wind vectors reported for a given cell</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">units:
+                        </span>
+                                       <span class="em">counts</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor:
+                        </span>
+                                       <span class="em">1.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">scale_factor_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">add_offset_err:
+                        </span>
+                                       <span class="em">0.0000000000000000</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">calibrated_nt:
+                        </span>
+                                       <span class="em">21</span>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div class="small">
+                                       <span class="bold">valid_range:
+                        </span>
+                                       <span class="em">0, 4</span>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           vdata_NSCAT_Rev_20_SwathIndex_vdf_begin
+            myJSVarName:     org_opendap_var_d7e1609
+            checkBoxName:    get_org_opendap_var_d7e1609
+            isContainer:     false
+            isArray:         true
+            myType:          Int16
+            position:        16
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1609 = new dap_var("vdata_NSCAT_Rev_20_SwathIndex_vdf_begin", "org_opendap_var_d7e1609", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1609);
+            org_opendap_var_d7e1609.checkBox = "get_org_opendap_var_d7e1609";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1609"
+                               onclick="org_opendap_var_d7e1609.handle_projection_change(get_org_opendap_var_d7e1609)"
+                               onfocus="describe_projection()"/>vdata_NSCAT_Rev_20_SwathIndex_vdf_begin<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">VDFDim0_vdata_NSCAT_Rev_20_SwathIndex_vdf_begin=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>819]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is Int16)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1609_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1609.addDimension(org_opendap_var_d7e1609_dim_1,820);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Mean_Time
+            myJSVarName:     org_opendap_var_d7e1616
+            checkBoxName:    get_org_opendap_var_d7e1616
+            isContainer:     false
+            isArray:         true
+            myType:          String
+            position:        17
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1616 = new dap_var("vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Mean_Time", "org_opendap_var_d7e1616", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1616);
+            org_opendap_var_d7e1616.checkBox = "get_org_opendap_var_d7e1616";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1616"
+                               onclick="org_opendap_var_d7e1616.handle_projection_change(get_org_opendap_var_d7e1616)"
+                               onfocus="describe_projection()"/>vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Mean_Time<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">VDFDim0_vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Mean_Time=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is String)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1616_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1616.addDimension(org_opendap_var_d7e1616_dim_1,458);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Low_Wind_Speed_Flag
+            myJSVarName:     org_opendap_var_d7e1623
+            checkBoxName:    get_org_opendap_var_d7e1623
+            isContainer:     false
+            isArray:         true
+            myType:          UInt32
+            position:        18
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1623 = new dap_var("vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Low_Wind_Speed_Flag", "org_opendap_var_d7e1623", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1623);
+            org_opendap_var_d7e1623.checkBox = "get_org_opendap_var_d7e1623";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1623"
+                               onclick="org_opendap_var_d7e1623.handle_projection_change(get_org_opendap_var_d7e1623)"
+                               onfocus="describe_projection()"/>vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Low_Wind_Speed_Flag<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">VDFDim0_vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Low_Wind_Speed_Flag=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is UInt32)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1623_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1623.addDimension(org_opendap_var_d7e1623_dim_1,458);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                     <!--
+- - - - - - - - - - -
+            myFQN:           vdata_NSCAT_Rev_20_NSCAT_L2_vdf_High_Wind_Speed_Flag
+            myJSVarName:     org_opendap_var_d7e1630
+            checkBoxName:    get_org_opendap_var_d7e1630
+            isContainer:     false
+            isArray:         true
+            myType:          UInt32
+            position:        19
+            parentContainer: 
+- - - - - - - - - - -
+        --><script type="text/javascript">org_opendap_var_d7e1630 = new dap_var("vdata_NSCAT_Rev_20_NSCAT_L2_vdf_High_Wind_Speed_Flag", "org_opendap_var_d7e1630", true,false);
+
+            
+                DAP2_URL.add_dap_var(org_opendap_var_d7e1630);
+            org_opendap_var_d7e1630.checkBox = "get_org_opendap_var_d7e1630";
+            </script>
+                     <div style="color: black;margin-left:-20px;margin-top:10px">
+                        <input type="checkbox" id="get_org_opendap_var_d7e1630"
+                               onclick="org_opendap_var_d7e1630.handle_projection_change(get_org_opendap_var_d7e1630)"
+                               onfocus="describe_projection()"/>vdata_NSCAT_Rev_20_NSCAT_L2_vdf_High_Wind_Speed_Flag<span class="medium">[
+                <span class="small" style="vertical-align: 15%;">VDFDim0_vdata_NSCAT_Rev_20_NSCAT_L2_vdf_High_Wind_Speed_Flag=
+                    </span>
+                0
+                <span class="medium" style="vertical-align: 10%;">..</span>457]
+            </span>
+                        <span class="small" style="vertical-align: 15%; font-size: 25%;">(Type is UInt32)
+            </span>
+                     </div>
+                     <input type="text" id="org_opendap_var_d7e1630_dim_1" size="8"
+                            oninput="autoResize(event)"
+                            onfocus="describe_index()"
+                            onChange="DAP2_URL.update_url()"/>
+                     <script type="text/javascript">org_opendap_var_d7e1630.addDimension(org_opendap_var_d7e1630_dim_1,458);
+            </script>
+                     <div class="small_italic" style="color:#B0C6EB;">no attributes</div>
+                  </div>
+               </td>
+            </tr>
+         </table>
+         <hr size="1" noshade="noshade"/>
+         <table width="100%" border="0">
+            <tr>
+               <td class="small">
+                  <input type="checkbox" id="debug_checkbox"/>debug
+                                <script type="text/javascript">
+                                    DEBUG.setCheckBox(debug_checkbox);
+                                </script>
+               </td>
+               <td>
+                  <div class="small" align="right">Hyrax development sponsored by
+                                    <a href="http://www.nsf.gov/">NSF</a>,
+                                    <a href="http://www.nasa.gov/">NASA</a>, and
+                                    <a href="http://www.noaa.gov/">NOAA</a>
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </form>
+      <h3>OPeNDAP Hyrax (Not.A.Release)
+                    <div>
+            <a href="/opendap/docs/">Documentation</a>
+            <span class="small"
+                  style="font-weight: normal; display: inline; float: right; padding-right: 10px;">
+               <a href="mailto:support@opendap.org?subject=Hyrax Usage Question&amp;body=%0A%0A%0A%0A%0A# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --%0A# %0A# We're sorry you had a problem using the server.%0A# Please use the space above to describe what you%0A# were trying to do and we will try to assist you.%0A# Thanks,%0A# OPeNDAP Support.%0A# %0A# -- -- -- hyrax location info, please include -- -- --%0A# %0A# request_url: http://@SERVER@/opendap/hyrax/data/hdf4/S2000415.HDF.gz.html%0A# protocol: HTTP/1.1%0A# server: localhost%0A# port: 8080%0A# javax.servlet.forward.request_uri: /opendap/data/hdf4/S2000415.HDF.gz.html%0A# query_string: n/a%0A# status: 200%0A# %0A# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --%0A">Questions? Contact Support</a>
+            </span>
+         </div>
+      </h3>
+      <script type="application/ld+json">
+{
+  "@context": {
+    "@vocab": "http://schema.org"
+  },
+  "@type": "Dataset",
+  "name": "S2000415.HDF",
+  "url": "http://@SERVER@/opendap/data/hdf4/S2000415.HDF.gz",
+  "includedInDataCatalog": { 
+    "@type": "DataCatalog", 
+    "name": "Hyrax Data Server", 
+    "sameAs": "http://@SERVER@/opendap/hyrax/data/hdf4/contents.html"
+  },
+  "variableMeasured": [
+  {
+    "@type": "PropertyValue",
+    "name": "http://@SERVER@/opendap/data/hdf4/S2000415.HDF.gz",
+    "valueReference": [ 
+        {
+          "@type": "PropertyValue", 
+          "name": "Producer_Agency", 
+          "value": "NASA"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Producer_Institution", 
+          "value": "JPL"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Sensor_Name", 
+          "value": "NSCAT"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Project_ID", 
+          "value": "NSCAT"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "SIS_ID", 
+          "value": "597-512-24/1996-07-01"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Build_ID", 
+          "value": "3.2.1/1996-11-05"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "ADEOS_Data_Package_ID", 
+          "value": "S2"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "ADEOS_Data_Package_Type", 
+          "value": "S"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Product_Creation_Time", 
+          "value": "1996-318T01:35:16.000"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Data_Type", 
+          "value": "L2"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Data_Status", 
+          "value": "COMPLETE"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "First_Rev_Number", 
+          "value": "415"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "First_Rev_Eq_Crossing_Time", 
+          "value": "1996-259T04:01:28.226"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "First_Rev_Eq_Crossing_Lon", 
+          "value": "279.9830017"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "First_Data_Time", 
+          "value": "1996-259T03:43:48.945"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Last_Data_Time", 
+          "value": "1996-259T05:09:48.997"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Num_Expected_Output_Records", 
+          "value": "458"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Num_Actual_Output_Records", 
+          "value": "458"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Ambig_Removal_Method", 
+          "value": "Baseline used"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "HDF_Build_ID", 
+          "value": "JPL D-xxxxx 12/15/94"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "HDF_SIS_ID", 
+          "value": "JPL D-12060 12/15/94"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "HDF_Conversion_Organization", 
+          "value": "JPL PO.DAAC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "HDF_Conversion_Time", 
+          "value": "1996-320T17:32:34"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "Data_Format_Type", 
+          "value": "HDF"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "position of the ambiguities"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "position"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "position of the ambiguities"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "position"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "position of the ambiguities"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "position"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "position of the ambiguities"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "position"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "position of the ambiguities"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "position"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "row"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "long_name", 
+          "value": "WVC index"        },
+        {
+          "@type": "PropertyValue", 
+          "name": "name", 
+          "value": "WVC"        }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_WVC_Lat",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "latitude"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "deg"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "0.010000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "22"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "-9000", "7771" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_WVC_Lon",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "longitude"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "deg"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "0.010000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "22"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "31242" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Num_Sigma0",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "The total number of sigma-0 measurements"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "counts"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "1.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "21"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "19" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Num_Beam_12",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "The total number of sigma-0s received from beam 1 or 2"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "counts"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "1.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "21"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "6" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Num_Beam_34",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "The total number of sigma-0s received from beam 3 or 4"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "counts"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "1.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "21"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "6" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Num_Beam_56",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "The total number of sigma-0s received from beam 5 or 6"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "counts"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "1.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "21"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "6" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Num_Beam_78",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "The total number of sigma-0s received from beam 7 or 8"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "counts"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "1.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "21"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "6" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_WVC_Quality_Flag",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "WVC Quality Flag"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "1.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "21"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "3" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Mean_Wind",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "Mean Wind Speed"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "m/s"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "0.010000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "23"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "2374" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Wind_Speed",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "Wind speed associated with a WVC"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "m/s"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "0.010000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "23"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "2571" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Wind_Dir",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "Wind direction solution associated with a WVC"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "deg"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "0.010000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "23"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "35997" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Error_Speed",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "Uncertainty estimated for the wind speed value"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "m/s"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "0.010000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "23"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "2410" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Error_Dir",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "Uncertainty estimated for the wind direction value"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "deg"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "0.010000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "23"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "2435" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_MLE_Likelihood",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "Relative likelihood that a given win vector solution is correct"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "0.10000000000000001"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "22"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "-32768", "2825" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "NSCAT_Rev_20_Num_Ambigs",
+    "valueReference": [ 
+      {
+        "@type": "PropertyValue", 
+        "name": "long_name", 
+        "value": "Number of ambiguous wind vectors reported for a given cell"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "units", 
+        "value": "counts"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor", 
+        "value": "1.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "scale_factor_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "add_offset_err", 
+        "value": "0.0000000000000000"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "calibrated_nt", 
+        "value": "21"      },
+      {
+        "@type": "PropertyValue", 
+        "name": "valid_range", 
+        "value": [ "0", "4" ]      }
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "vdata_NSCAT_Rev_20_SwathIndex_vdf_begin",
+    "valueReference": [ 
+
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Mean_Time",
+    "valueReference": [ 
+
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "vdata_NSCAT_Rev_20_NSCAT_L2_vdf_Low_Wind_Speed_Flag",
+    "valueReference": [ 
+
+    ]
+  },
+  {
+    "@type": "PropertyValue",
+    "name": "vdata_NSCAT_Rev_20_NSCAT_L2_vdf_High_Wind_Speed_Flag",
+    "valueReference": [ 
+
+    ]
+  }
+  ]
+}
+</script>
+   </body>
+   <script type="text/javascript">
+                CollapsibleLists.apply(true);
+                initCollapsibles("/opendap/docs");
+            </script>
+</xhtml>
