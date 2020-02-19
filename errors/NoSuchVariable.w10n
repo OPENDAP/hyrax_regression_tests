@@ -1,2 +1,2 @@
-url = http://localhost:8080/opendap/w10n/data/nc/fnoc1.nc/k/
+url = http://@SERVER@/opendap/w10n/data/nc/fnoc1.nc/k/
 -s 

@@ -34,7 +34,7 @@
       <script type="text/javascript" src="/opendap/js/CollapsibleLists.js"> </script>
       <script type="text/javascript" src="/opendap/js/dap2_buttons.js"> </script>
       <script type="text/javascript">
-                    DAP2_URL = new dap2_url("http://localhost:8080/opendap/data/ff/avhrr.dat");
+                    DAP2_URL = new dap2_url("http://@SERVER@/opendap/data/ff/avhrr.dat");
                     DEBUG = new debug_obj();
                     var es = "false";
                     enforce_selection = es.localeCompare("true")==0;
@@ -51,7 +51,7 @@
                <div class="small_italic" style="padding-bottom: 5px;">Welcome to the new</div>
                <div class="large" style="padding-bottom: 5px;">OPeNDAP Data Access Form</div>
                <div class="small_italic" style="padding-bottom: 5px;">
-                  <a href="http://localhost:8080/opendap/data/ff/avhrr.dat.html_old">The old form can be found here...</a>
+                  <a href="http://@SERVER@/opendap/data/ff/avhrr.dat.html_old">The old form can be found here...</a>
                </div>
             </td>
          </tr>
@@ -99,7 +99,7 @@
                </td>
                <td>
                   <input name="url" type="text" style="width:98%;margin-left:10;"
-                         value="http://localhost:8080/opendap/data/ff/avhrr.dat"/>
+                         value="http://@SERVER@/opendap/data/ff/avhrr.dat"/>
                </td>
             </tr>
             <tr>
@@ -718,7 +718,7 @@
             <a href="/opendap/docs/">Documentation</a>
             <span class="small"
                   style="font-weight: normal; display: inline; float: right; padding-right: 10px;">
-               <a href="mailto:support@opendap.org?subject=Hyrax Usage Question&amp;body=%0A%0A%0A%0A%0A# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --%0A# %0A# We're sorry you had a problem using the server.%0A# Please use the space above to describe what you%0A# were trying to do and we will try to assist you.%0A# Thanks,%0A# OPeNDAP Support.%0A# %0A# -- -- -- hyrax location info, please include -- -- --%0A# %0A# request_url: http://localhost:8080/opendap/hyrax/data/ff/avhrr.dat.html%0A# protocol: HTTP/1.1%0A# server: localhost%0A# port: 8080%0A# javax.servlet.forward.request_uri: /opendap/data/ff/avhrr.dat.html%0A# query_string: n/a%0A# status: 200%0A# %0A# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --%0A">Questions? Contact Support</a>
+               <a href="mailto:support@opendap.org?subject=Hyrax Usage Question&amp;body=%0A%0A%0A%0A%0A# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --%0A# %0A# We're sorry you had a problem using the server.%0A# Please use the space above to describe what you%0A# were trying to do and we will try to assist you.%0A# Thanks,%0A# OPeNDAP Support.%0A# %0A# -- -- -- hyrax location info, please include -- -- --%0A# %0A# request_url: http://@SERVER@/opendap/hyrax/data/ff/avhrr.dat.html%0A# protocol: HTTP/1.1%0A# server: localhost%0A# port: 8080%0A# javax.servlet.forward.request_uri: /opendap/data/ff/avhrr.dat.html%0A# query_string: n/a%0A# status: 200%0A# %0A# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --%0A">Questions? Contact Support</a>
             </span>
          </div>
       </h3>
@@ -729,16 +729,16 @@
   },
   "@type": "Dataset",
   "name": "avhrr.dat",
-  "url": "http://localhost:8080/opendap/data/ff/avhrr.dat",
+  "url": "http://@SERVER@/opendap/data/ff/avhrr.dat",
   "includedInDataCatalog": { 
     "@type": "DataCatalog", 
     "name": "Hyrax Data Server", 
-    "sameAs": "http://localhost:8080/opendap/hyrax/data/ff/contents.html"
+    "sameAs": "http://@SERVER@/opendap/hyrax/data/ff/contents.html"
   },
   "variableMeasured": [
   {
     "@type": "PropertyValue",
-    "name": "http://localhost:8080/opendap/data/ff/avhrr.dat",
+    "name": "http://@SERVER@/opendap/data/ff/avhrr.dat",
     "valueReference": [ 
         {
           "@type": "PropertyValue", 

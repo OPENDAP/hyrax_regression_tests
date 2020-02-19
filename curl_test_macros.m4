@@ -21,6 +21,12 @@ AT_ARG_OPTION_ARG([besdev],
     [echo "besdev set to $at_arg_besdev"; besdev=$at_arg_besdev],
     [besdev=no])
 
+AT_ARG_OPTION_ARG([server],
+    [--server=host_name   Run tests against a server on this host (default localhost:8080)],
+    [echo "server set to $at_arg_server"; SERVER=$at_arg_server],
+    [echo "server default localhost:8080"; SERVER=localhost:8080])
+
+
 # Usage: _AT_TEST_*(<bescmd source>, <baseline file>, <xpass/xfail> [default is xpass])
 
 dnl Given a filename, remove any date-time string of the form "yyyy-mm-dd hh:mm:ss" 
@@ -65,86 +71,108 @@ m4_define([PATCH_HYRAX_RELEASE], [dnl
     mv $1.sed $1
 ])
 
+dnl When we made these tests independent of the server host, we had to make sure
+dnl the host name in the baselines was replaced with a consistent symbol and make
+dnl that symbol was, in turn, used in the response text compared to the baselines.
+
+m4_define([PATCH_SERVER_NAME], [dnl
+    sed "s/$SERVER/@SERVER@/g" < $1 > $1.sed
+    mv $1.sed $1
+])
+
 #######################################################################################
 #
 #   CURL TESTS
-
 
 #--------------------------------------------------------------------------------------
 #
 # Basic test using diff  Response output should be text!!
 #
-m4_define([_AT_CURL_TEST], [dnl
+# Usage: AT_CURL_RESPONSE_TEST(test, baseline, [xfail|xpass])
+# If arg #3 is not given, assume xpass
 
-    AT_SETUP([CURL $1])
-    AT_KEYWORDS([curl])
+m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
-    input=$1
-    baseline=$2
+    AT_SETUP([curl $1])
+    AT_KEYWORDS([text])
+
+    input=$abs_srcdir/$1
+    baseline=$abs_srcdir/$1.baseline
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([curl -K $input], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K -], [0], [stdout])
+        PATCH_HYRAX_RELEASE([stdout])
+        PATCH_SERVER_NAME([stdout])
+
         AT_CHECK([mv stdout $baseline.tmp])
-	    PATCH_HYRAX_RELEASE([$baseline.tmp])
         ],
         [
-        AT_CHECK([curl -K $input], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K -], [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])
+	    PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$3" = "xfail"])
         ])
 
     AT_CLEANUP
 ])
-
 
 #--------------------------------------------------------------------------------------
 #
 # DAP2 Data response test
 #
-m4_define([_AT_CURL_DAP2_DATA_TEST],  [dnl
+# Usage: AT_CURL_DAP2_DATA_RESPONSE_TEST(test, baseline, [xfail|xpass])
+# If arg #3 is not given, assume xpass
 
-    AT_SETUP([CURL $1])
-    AT_KEYWORDS([curl])
+m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 
-    input=$1
-    baseline=$2
+    AT_SETUP([curl $1])
+    AT_KEYWORDS([dods])
+
+    input=$abs_srcdir/$1
+    baseline=$abs_srcdir/$1.baseline
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([curl -K $input | getdap -Ms -], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K - | getdap -Ms -], [0], [stdout])
+        PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
-        AT_CHECK([curl -K $input | getdap -Ms -], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K - | getdap -Ms -], [0], [stdout])
+        PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$3" = "xfail"])
         ])
 
     AT_CLEANUP
 ])
-
 
 #--------------------------------------------------------------------------------------
 #
 # DAP4 Data response test
 #
-m4_define([_AT_CURL_DAP4_DATA_TEST],  [dnl
+# Usage: AT_CURL_DAP4_DATA_RESPONSE_TEST(test, baseline, [xfail|xpass])
+# If arg #3 is not given, assume xpass
+
+m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 
     AT_SETUP([CURL $1])
-    AT_KEYWORDS([curl])
+    AT_KEYWORDS([dap])
 
-    input=$1
-    baseline=$2
+    input=$abs_srcdir/$1
+    baseline=$abs_srcdir/$1.baseline
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([curl -K $input | getdap4 -D -M -s -], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K - | getdap4 -D -M -s -], [0], [stdout])
+        PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
-        AT_CHECK([curl -K $input | getdap4  -D -M -s -], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K - | getdap4  -D -M -s -], [0], [stdout])
+        PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$3" = "xfail"])
         ])
@@ -152,26 +180,30 @@ m4_define([_AT_CURL_DAP4_DATA_TEST],  [dnl
     AT_CLEANUP
 ])
 
-
 #--------------------------------------------------------------------------------------
 #
 # ASCII Regex test
 #
-m4_define([_AT_CURL_PATTERN_TEST], [dnl
+# Usage: AT_CURL_RESPONSE_PATTERN_MATCH_TEST(test, baseline, [xfail|xpass])
+# If arg #3 is not given, assume xpass
 
-    AT_SETUP([CURL $1])
-    AT_KEYWORDS([curl])
+m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 
-    input=$1
-    baseline=$2
+    AT_SETUP([curl $1])
+    AT_KEYWORDS([pattern])
+
+    input=$abs_srcdir/$1
+    baseline=$abs_srcdir/$1.baseline
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([curl -K $input], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K -], [0], [stdout])
+        PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
-        AT_CHECK([curl -K $input], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K -], [0], [stdout])
+        PATCH_SERVER_NAME([stdout])
         AT_CHECK([grep -f $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$3" = "xfail"])
         ])
@@ -179,30 +211,31 @@ m4_define([_AT_CURL_PATTERN_TEST], [dnl
     AT_CLEANUP
 ])
 
-
-
 #--------------------------------------------------------------------------------------
 #
 # ASCII Compare PLUS Check HTTP Header using REGEX
 # The http_header baseline MUST be edited to make a correct regular expression
 #
-m4_define([_AT_CURL_HEADER_AND_RESPONSE_TEST], [dnl
+# Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(test, baseline, [xfail|xpass])
+# If arg #3 is not given, assume xpass
 
-    AT_SETUP([CURL $1])
-    AT_KEYWORDS([curl])
+m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
-    input=$1
-    baseline=$2
+    AT_SETUP([curl $1])
+    AT_KEYWORDS([header])
+
+    input=$abs_srcdir/$1
+    baseline=$abs_srcdir/$1.baseline
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([curl -D http_header -K $input], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([http_header])
         AT_CHECK([mv stdout $baseline.tmp])
         AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
-        AT_CHECK([curl -D http_header -K $input], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_CHECK([grep -f $baseline.http_header http_header], [0], [ignore])
@@ -219,23 +252,26 @@ m4_define([_AT_CURL_HEADER_AND_RESPONSE_TEST], [dnl
 # ASCII Compare PLUS Check HTTP Header using REGEX
 # The http_header baseline MUST be edited to make a correct regular expression
 #
-m4_define([_AT_CURL_HEADER_AND_RESPONSE_TEST_ERROR], [dnl
+# Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(test, baseline, [xfail|xpass])
+# If arg #3 is not given, assume xpass
 
-    AT_SETUP([CURL $1])
-    AT_KEYWORDS([curl])
+m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
 
-    input=$1
-    baseline=$2
+    AT_SETUP([curl $1])
+    AT_KEYWORDS([error])
+
+    input=$abs_srcdir/$1
+    baseline=$abs_srcdir/$1.baseline
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([curl -D http_header -K $input], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([http_header])
         AT_CHECK([mv stdout $baseline.tmp])
         AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
-        AT_CHECK([curl -D http_header -K $input], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_CHECK([grep -f $baseline.http_header http_header], [0], [ignore])
@@ -244,89 +280,3 @@ m4_define([_AT_CURL_HEADER_AND_RESPONSE_TEST_ERROR], [dnl
 
     AT_CLEANUP
 ])
-
-
-
-#######################################################################################
-#
-# Curl Testing Macro Definitions
-#
-m4_define([AT_CURL_RESPONSE_TEST],
-[_AT_CURL_TEST([$abs_srcdir/$1], [$abs_srcdir/$1.baseline], [$2])])
-
-m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],
-[_AT_CURL_DAP2_DATA_TEST([$abs_srcdir/$1], [$abs_srcdir/$1.baseline], [$2])])
-
-m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],
-[_AT_CURL_DAP4_DATA_TEST([$abs_srcdir/$1], [$abs_srcdir/$1.baseline], [$2])])
-
-
-m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST],
-[_AT_CURL_PATTERN_TEST([$abs_srcdir/$1], [$abs_srcdir/$1.baseline], [$2])])
-
-
-m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST],
-[_AT_CURL_HEADER_AND_RESPONSE_TEST([$abs_srcdir/$1], [$abs_srcdir/$1.baseline], [$2])])
-
-m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR],
-[_AT_CURL_HEADER_AND_RESPONSE_TEST_ERROR([$abs_srcdir/$1], [$abs_srcdir/$1.baseline], [$2])])
-
-
-#######################################################################################
-#######################################################################################
-#######################################################################################
-#######################################################################################
-#######################################################################################
-#
-#   OLD (UNUSED) BESSTANDALONE TESTS
-#     (Keeping them in as templates for yet to be written curl tests)
-#
-
-
-dnl This is similar to the "binary data" macro above, but instead assumes the
-dnl output of besstandalone is a netcdf3 file. The binary stream is read using
-dnl ncdump and the output of that is compared to a baseline. Of couse, this
-dnl requires ncdump be accessible.
-
-m4_define([_AT_BESCMD_NETCDF_TEST],  [dnl
-
-    AT_SETUP([BESCMD $1])
-    AT_KEYWORDS([netcdf])
-    
-    input=$1
-    baseline=$2
-
-    AS_IF([test -n "$baselines" -a x$baselines = xyes],
-        [
-        AT_CHECK([besstandalone -c $abs_builddir/bes.conf -i $input > test.nc])
-        
-        dnl first get the version number, then the header, then the data
-        AT_CHECK([ncdump -k test.nc > $baseline.ver.tmp])
-        AT_CHECK([ncdump -h test.nc > $baseline.header.tmp])
-        AT_CHECK([ncdump test.nc > $baseline.data.tmp])
-        ],
-        [
-        AT_CHECK([besstandalone -c $abs_builddir/bes.conf -i $input > test.nc])
-        
-        AT_CHECK([ncdump -k test.nc > tmp])
-        AT_CHECK([diff -b -B $baseline.ver tmp])
-        
-        AT_CHECK([ncdump -h test.nc > tmp])
-        AT_CHECK([diff -b -B $baseline.header tmp])
-        
-        AT_CHECK([ncdump test.nc > tmp])
-        AT_CHECK([diff -b -B $baseline.data tmp])
-        
-        AT_XFAIL_IF([test "$3" = "xfail"])
-        ])
-
-    AT_CLEANUP
-])
-
-#######################################################################################
-#
-# Besstandalone Testing Macro Definitions
-#
-m4_define([AT_BESCMD_NETCDF_RESPONSE_TEST],
-[_AT_BESCMD_NETCDF_TEST([$abs_srcdir/$1], [$abs_srcdir/$1.baseline], [$2])])
-#######################################################################################

@@ -1,2 +1,2 @@
-url = http://localhost:8080/opendap/data/nc/bears.nc.das
+url = http://@SERVER@/opendap/data/nc/bears.nc.das
 -s
