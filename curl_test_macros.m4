@@ -61,7 +61,7 @@ m4_define([PATCH_SERVER_NAME], [dnl
 #
 # Usage: AT_CURL_RESPONSE_TEST(test, [xfail|xpass])
 # The baseline for 'test' must be in 'test.baseline'
-# If arg #3 is not given, assume xpass
+# If arg #2 is not given, assume xpass
 
 m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
@@ -95,7 +95,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 #
 # Usage: AT_CURL_DAP2_DATA_RESPONSE_TEST(test, [xfail|xpass])
 # The baseline for 'test' must be in 'test.baseline'
-# If arg #3 is not given, assume xpass
+# If arg #2 is not given, assume xpass
 
 m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 
@@ -127,7 +127,7 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 #
 # Usage: AT_CURL_DAP4_DATA_RESPONSE_TEST(test, [xfail|xpass])
 # The baseline for 'test' must be in 'test.baseline'
-# If arg #3 is not given, assume xpass
+# If arg #2 is not given, assume xpass
 
 m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 
@@ -159,7 +159,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 #
 # Usage: AT_CURL_RESPONSE_PATTERN_MATCH_TEST(test, [xfail|xpass])
 # The baseline for 'test' must be in 'test.baseline'
-# If arg #3 is not given, assume xpass
+# If arg #2 is not given, assume xpass
 
 m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 
@@ -192,7 +192,7 @@ m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 #
 # Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(test, [xfail|xpass])
 # The baseline for 'test' must be in 'test.baseline'
-# If arg #3 is not given, assume xpass
+# If arg #2 is not given, assume xpass
 
 m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
@@ -201,6 +201,10 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
     input=$abs_srcdir/$1
     baseline=$abs_srcdir/$1.baseline
+
+    dnl Made this use the PID because parallel tests might overwrite data if using the
+    dnl same file name. I'm not sure autotest is smart enough to recognize that situation
+    dnl for an arbitrary file. It does seem to delete the file.
     http_header=http_header$$
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
@@ -208,6 +212,8 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
+        dnl Initialize the $baseline.http_header.tmp file with cntl-c, then put the first
+        dnl 'header' (HTTP/1.1 <code>) in there, substituting '\.' for '.'
         AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
@@ -215,6 +221,58 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_CHECK([grep -f $baseline.http_header $http_header], [0], [ignore])
+        AT_XFAIL_IF([test "$2" = "xfail"])
+        ])
+
+    AT_CLEANUP
+])
+
+#--------------------------------------------------------------------------------------
+#
+# Check HTTP Header using REGEX
+# The http_header baseline MUST be edited to make a correct regular expression
+#
+# Usage: AT_CURL_HTTP_HEADER_TEST(test, [xfail|xpass])
+# This test does not compare a baseline, like the others but builds a 'baseline'
+# using the HTTP response information in the response headers.
+# If arg #2 is not given, assume xpass
+
+m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
+
+    AT_SETUP([curl $1])
+    AT_KEYWORDS([html])
+
+    input=$abs_srcdir/$1
+
+    dnl Made this use the PID because parallel tests might overwrite data if using the
+    dnl same file name. I'm not sure autotest is smart enough to recognize that situation
+    dnl for an arbitrary file. It does seem to delete the file.
+    http_header=http_header$$
+
+    AS_IF([test -n "$baselines" -a x$baselines = xyes],
+        [
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K - > /dev/null], [0], [ignore])
+
+        dnl The first line of the headers is the HTTP return status.
+        dnl Remove the CR from the CRLF pair so that grep can use the line for a string/pattern match.
+        dnl NB: sed on OSX does not recognize \r, so use tr to remove the CR character. jhrg 2/20/20
+        AT_CHECK([head -1 $http_header | tr -d '\r' > $input.http_header.tmp])
+        ],
+        [
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
+
+        dnl -F: test strings, not patterns. This test just looks for the HTTP response code.
+        AT_CHECK([grep -F -f $input.http_header $http_header], [0], [ignore])
+
+        dnl Now check the baseline if it exists. These baselines contain a list of
+        dnl patterns that must be present. They have to be written by hand.
+        dnl
+        dnl FIXME This does not work. Close, but not working yet.
+        dnl
+        AS_IF([test -f $input.lines],
+        [
+         AT_CHECK([test `cat $input.lines | wc -l` -eq `grep -f $input.lines stdout | wc -l`], [0], [ignore])
+        ])
         AT_XFAIL_IF([test "$2" = "xfail"])
         ])
 
@@ -230,7 +288,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 #
 # Usage: AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(test, [xfail|xpass])
 # The baseline for 'test' must be in 'test.baseline'
-# If arg #3 is not given, assume xpass
+# If arg #2 is not given, assume xpass
 # The test will only be run if the --besdev option is set to 'yes'
 
 m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl

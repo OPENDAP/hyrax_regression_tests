@@ -1,0 +1,13 @@
+.idea/
+Makefile
+Makefile.in
+atconfig
+atlocal
+autom4te.cache/
+config.log
+config.status
+configure
+package.m4
+testsuite
+testsuite.dir/
+testsuite.log
