@@ -1,21 +1,21 @@
 dist: trusty
 
-language: cpp
+language: shell
 
-compiler: gcc
+# compiler: gcc
 
 branches:
   only:
-  - master
-  - travis
+    - master
+    - travis
 
 services:
   - docker
 
 before_install:
-- docker pull opendap/hyrax:snapshot
-- docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
-- docker ps -a
+  - docker pull opendap/hyrax:snapshot
+  - docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
+  - docker ps -a
 
 before_script:
   - autoreconf --force --install --verbose
