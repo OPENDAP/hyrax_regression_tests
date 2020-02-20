@@ -144,7 +144,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
-        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K - | getdap4  -D -M -s -], [0], [stdout])
+        AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -K - | getdap4 -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
@@ -210,17 +210,18 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
-        REMOVE_DATE_HEADER([$http_header])
+        dnl REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
         dnl Initialize the $baseline.http_header.tmp file with cntl-c, then put the first
         dnl 'header' (HTTP/1.1 <code>) in there, substituting '\.' for '.'
-        AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
+        AT_CHECK([head -1 $http_header | tr -d '\r' > $input.http_header.tmp])
+        dnl AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
-        REMOVE_DATE_HEADER([$http_header])
+        dnl REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
-        AT_CHECK([grep -f $baseline.http_header $http_header], [0], [ignore])
+        AT_CHECK([grep -f $input.http_header $http_header], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
         ])
 
@@ -305,14 +306,15 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
-        AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
+        dnl AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
+        AT_CHECK([head -1 $http_header | tr -d '\r' > $input.http_header.tmp])
         ],
         [
         AT_SKIP_IF([test x$besdev = xno])
         AT_CHECK([sed "s/@SERVER@/$SERVER/g" $input | curl -D $http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
-        AT_CHECK([grep -f $baseline.http_header $http_header], [0], [ignore])
+        AT_CHECK([grep -f $input.http_header $http_header], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail" ])
         ])
 
