@@ -1,26 +1,10 @@
 
 AUTOMAKE_OPTIONS = foreign 
 
-# TODO Remove old bes.conf stuff
-
-# noinst_DATA = bes.conf
-
-# CLEANFILES = bes.conf
-
 EXTRA_DIST = $(TESTSUITE).at $(TESTSUITE) \
 $(srcdir)/package.m4 atlocal.in curl_test_macros.m4
 
-# bes.conf.in
-
 DISTCLEANFILES = atconfig
-
-# Build the bes.conf used for testing so that the value substituted for
-# @abs_top_srcdir@ does not contain '../'. This happens when using 
-# configure's value for the parameter when running the distcheck target.
-bes.conf: bes.conf.in $(top_srcdir)/configure.ac
-	@clean_abs_top_srcdir=`echo ${abs_top_srcdir} | sed 's/\(.*\)\/\(.[^\/]*\)\/\.\./\1/g'`; \
-	sed -e "s%[@]abs_top_srcdir[@]%$$clean_abs_top_srcdir%" \
-		-e "s%[@]abs_top_builddir[@]%${abs_top_builddir}%" $< > bes.conf
 
 ############## Autotest follows #####################
 
@@ -34,7 +18,8 @@ $(TESTSUITE): $(TESTSUITE).at $(srcdir)/curl_test_macros.m4 $(srcdir)/package.m4
 check-local: atconfig atlocal $(TESTSUITE)
 	@echo "Run tests with an empty cache"
 	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
-	-rm -rf dap_cache/*
+
+# -rm -rf dap_cache/*
 
 clean-local:
 	test ! -f '$(TESTSUITE)' || $(SHELL) '$(TESTSUITE)' --clean
