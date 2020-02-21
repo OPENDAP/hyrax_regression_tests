@@ -11,3 +11,5 @@ package.m4
 testsuite
 testsuite.dir/
 testsuite.log
+aclocal.m4
+conf/missing
