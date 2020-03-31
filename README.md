@@ -12,8 +12,12 @@ autoreconf -vif
 make check
 ```
 
-Once the tests have been built (use `make testsuite`), you can run them 
-using `./testsuite`. and modify that using several options. See `./testsuite --help`.
+Running `make check` builds `testsuite` and then runs it with the default
+options. However, it's faster, if you want to test a remote server, build
+the test program using `make testsuite` and then run them using 
+`./testsuite --server=<name> --jobs=8`.
+
+Run `./testsuite --help` to see a full set of options.
 
 Worth knowing:
 1. The --jobs=N will speed up the tests quite a bit, especially with a remote 
