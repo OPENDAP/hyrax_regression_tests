@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/nc/bears.nc.das?bears,aloan,i
+url = @DAP_SERVICE@/data/nc/bears.nc.das?bears,aloan,i
 -s

@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/hdf4/S2000415.HDF.gz.das
+url = @DAP_SERVICE@/data/hdf4/S2000415.HDF.gz.das
 -s

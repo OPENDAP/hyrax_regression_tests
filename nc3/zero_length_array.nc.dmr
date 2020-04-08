@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/nc/zero_length_array.nc.dmr
+url = @DAP_SERVICE@/data/nc/zero_length_array.nc.dmr
 -s

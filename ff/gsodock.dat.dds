@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/ff/gsodock.dat.dds
+url = @DAP_SERVICE@/data/ff/gsodock.dat.dds
 -s

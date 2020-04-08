@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/nc/fnoc1.nc.dap.csv?dap4.ce=k
+url = @DAP_SERVICE@/data/nc/fnoc1.nc.dap.csv?dap4.ce=k
 -s 

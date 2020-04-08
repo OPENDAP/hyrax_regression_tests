@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/nc/fnoc1.nc.das?lat
+url = @DAP_SERVICE@/data/nc/fnoc1.nc.das?lat
 -s

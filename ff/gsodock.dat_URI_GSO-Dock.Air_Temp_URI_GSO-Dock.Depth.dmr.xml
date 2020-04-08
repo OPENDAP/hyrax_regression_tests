@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/ff/gsodock.dat.dmr.xml?dap4.ce=URI_GSO-Dock.Air_Temp;URI_GSO-Dock.Depth
+url = @DAP_SERVICE@/data/ff/gsodock.dat.dmr.xml?dap4.ce=URI_GSO-Dock.Air_Temp;URI_GSO-Dock.Depth
 -s

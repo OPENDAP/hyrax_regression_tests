@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/nc/fnoc1.nc.dods?error(6)
+url = @DAP_SERVICE@/data/nc/fnoc1.nc.dods?error(6)
 -s
