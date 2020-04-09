@@ -429,7 +429,7 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(errors/BadConstraintSyntax.dap.csv)
 # Incompatible Media Type (Asking the server for something it cannot 
 # produce)
 # -- w10n response
-AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(errors/IncompatibleMediaType.w10n)
+AT_CURL_HTTP_HEADER_TEST(errors/IncompatibleMediaType.w10n)
 
 
 
