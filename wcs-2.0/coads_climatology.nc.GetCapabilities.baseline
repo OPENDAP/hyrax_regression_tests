@@ -92,9 +92,9 @@
             <ows:Parameter name="Format">
                 <ows:AllowedValues>
                     <ows:Value>dap2</ows:Value>
-                    <ows:Value>netcdf</ows:Value>
-                    <ows:Value>jpeg2000</ows:Value>
                     <ows:Value>geotiff</ows:Value>
+                    <ows:Value>jpeg2000</ows:Value>
+                    <ows:Value>netcdf</ows:Value>
                 </ows:AllowedValues>
             </ows:Parameter>
         </ows:Operation>
@@ -131,9 +131,9 @@
     </ows:OperationsMetadata>
     <wcs:ServiceMetadata>
         <wcs:formatSupported>application/octet-stream</wcs:formatSupported>
-        <wcs:formatSupported>application/x-netcdf</wcs:formatSupported>
-        <wcs:formatSupported>image/jp2</wcs:formatSupported>
         <wcs:formatSupported>image/tiff</wcs:formatSupported>
+        <wcs:formatSupported>image/jp2</wcs:formatSupported>
+        <wcs:formatSupported>application/x-netcdf</wcs:formatSupported>
     </wcs:ServiceMetadata>
     <wcs:Contents>
         <wcs:CoverageSummary>
