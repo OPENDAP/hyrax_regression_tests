@@ -1,2 +1,2 @@
-url = @DAP_SERVICE@/w10n/data/nc/fnoc1.nc/k/
+url = @W10N_SERVICE@/data/nc/fnoc1.nc/k/
 -s 

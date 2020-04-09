@@ -20,10 +20,15 @@ AT_ARG_OPTION_ARG([besdev],
     [echo "besdev set to $at_arg_besdev"; besdev=$at_arg_besdev],
     [besdev=no])
 
-AT_ARG_OPTION_ARG([dap_service],
-    [--dap_service=dap_service_url Run tests against the DAP service located at the specified endpoint URL. (default: http://localhost:8080/opendap/hyrax)],
-    [echo "dap_service set to: $at_arg_dap_service"; DAP_SERVICE=$at_arg_dap_service],
-    [echo "dap_service default: http://localhost:8080/opendap/hyrax"; DAP_SERVICE=http://localhost:8080/opendap/hyrax])
+AT_ARG_OPTION_ARG([dapservice],
+    [--dapservice=dap-service-endpoint-url Run the DAP tests against the DAP service located at the specified endpoint URL. (default: http://localhost:8080/opendap/hyrax)],
+    [echo "dapservice set to: $at_arg_dap_service"; DAP_SERVICE=$at_arg_dap_service],
+    [echo "dapservice default: http://localhost:8080/opendap/hyrax"; DAP_SERVICE=http://localhost:8080/opendap/hyrax])
+
+AT_ARG_OPTION_ARG([w10nservice],
+    [--w10nservice=w10n-service-endpoint-url Run w10n tests against the w10n service located at the specified endpoint URL. (default: http://localhost:8080/opendap/w10n)],
+    [echo "dap_service set to: $at_arg_dap_service"; W10N_SERVICE=$at_arg_dap_service],
+    [echo "dap_service default: http://localhost:8080/opendap/hyrax"; W10N_SERVICE=http://localhost:8080/opendap/w10n])
 
 AT_ARG_OPTION_ARG([netrc],
     [--netrc=netrc_file_name Run tests using the specified netrc file (ala cURL). (default: ~/.netrc)],
@@ -77,13 +82,15 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | \
+        curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -], [0], [stdout])
         PATCH_HYRAX_RELEASE([stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | \
+        curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -], [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])
 	    PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
@@ -111,12 +118,12 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -K - | getdap -Ms -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | getdap -Ms -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -K - | getdap -Ms -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | getdap -Ms -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
@@ -143,12 +150,12 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -K - | getdap4 -D -M -s -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | getdap4 -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -K - | getdap4 -D -M -s -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | getdap4 -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
@@ -175,12 +182,12 @@ m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([grep -f $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
@@ -213,7 +220,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -D $http_header -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         dnl REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
         dnl Initialize the $baseline.http_header.tmp file with cntl-c, then put the first
@@ -222,7 +229,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
         dnl AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -D $http_header -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         dnl REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_CHECK([grep -f $input.http_header $http_header], [0], [ignore])
@@ -256,7 +263,7 @@ m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -D $http_header -K - > /dev/null], [0], [ignore])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K - > /dev/null], [0], [ignore])
 
         dnl The first line of the headers is the HTTP return status.
         dnl Remove the CR from the CRLF pair so that grep can use the line for a string/pattern match.
@@ -264,7 +271,7 @@ m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
         AT_CHECK([head -1 $http_header | tr -d '\r' > $input.http_header.tmp])
         ],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -D $http_header -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
 
         dnl -F: test strings, not patterns. This test just looks for the HTTP response code.
         AT_CHECK([grep -F -f $input.http_header $http_header], [0], [ignore])
@@ -307,7 +314,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -D $http_header -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
         dnl AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
@@ -315,7 +322,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
         ],
         [
         AT_SKIP_IF([test x$besdev = xno])
-        AT_CHECK([sed "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c ../cookies_file -b ../cookies_file -L -D $http_header -K -], [0], [stdout])
+        AT_CHECK([sed -e "s+@W10N_SERVICE@+$W10N_SERVICE+g" -e "s+@DAP_SERVICE@+$DAP_SERVICE+g" $input | curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_CHECK([grep -f $input.http_header $http_header], [0], [ignore])
