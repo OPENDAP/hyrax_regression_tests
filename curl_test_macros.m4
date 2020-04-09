@@ -21,7 +21,9 @@ AT_ARG_OPTION_ARG([besdev],
     [besdev=no])
 
 AT_ARG_OPTION_ARG([hyraxurl],
-    [--dapservice=dap-service-endpoint-url Run the DAP tests against the DAP service located at the specified endpoint URL. (default: http://localhost:8080/opendap)],
+    [--hyraxurl=hyrax-service-endpoint-url Run the various tests (DAP2/4, w10n,
+    wcs, etc.) against the Hyrax instance located at the specified endpoint URL.
+    (default: http://localhost:8080/opendap)],
     [echo "Hyrax service url set to: $at_arg_hyraxurl"; HYRAX_ENDPOINT_URL=$at_arg_hyraxurl],
     [echo "Hyrax service url using default: http://localhost:8080/opendap"; HYRAX_ENDPOINT_URL=http://localhost:8080/opendap])
 
