@@ -1,2 +1,2 @@
-url = @DAP_SERVICE@/data/nc/bears.nc.das
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/bears.nc.das
 -s

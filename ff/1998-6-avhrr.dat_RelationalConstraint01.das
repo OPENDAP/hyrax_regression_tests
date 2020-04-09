@@ -1,6 +1,6 @@
 # In test URL below, parameters are encoded to be allowed by Tomcat instances fixed for CVE-2016-6816.
-# url = @DAP_SERVICE@/data/ff/1998-6-avhrr.dat.das?&GSO_AVHRR.day_num>160&GSO_AVHRR.day_num<162
-url = @DAP_SERVICE@/data/ff/1998-6-avhrr.dat.das
+# url = @HYRAX_ENDPOINT_URL@/hyrax/data/ff/1998-6-avhrr.dat.das?&GSO_AVHRR.day_num>160&GSO_AVHRR.day_num<162
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/ff/1998-6-avhrr.dat.das
 --data-urlencode "GSO_AVHRR"
 --data-urlencode "GSO_AVHRR.day_num>160"
 --data-urlencode "GSO_AVHRR.day_num<162"

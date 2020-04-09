@@ -1,2 +1,2 @@
-url = @DAP_SERVICE@/data/nc/bears.nc.dmr.xml
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/bears.nc.dmr.xml
 -s

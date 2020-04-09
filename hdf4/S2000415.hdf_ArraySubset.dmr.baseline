@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xml:base="@DAP_SERVICE@/data/hdf4/S2000415.HDF.gz" dapVersion="4.0" dmrVersion="1.0" name="S2000415.HDF">
+<Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xml:base="@HYRAX_ENDPOINT_URL@/hyrax/data/hdf4/S2000415.HDF.gz" dapVersion="4.0" dmrVersion="1.0" name="S2000415.HDF">
     <Byte name="NSCAT_Rev_20_Num_Beam_34">
         <Dim size="46"/>
         <Dim size="6"/>

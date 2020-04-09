@@ -1,2 +1,2 @@
-url = @DAP_SERVICE@/data/hdf4/S2000415.HDF.gz.das
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/hdf4/S2000415.HDF.gz.das
 -s

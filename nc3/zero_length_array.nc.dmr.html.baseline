@@ -30,7 +30,7 @@
       <script type="text/javascript" src="/opendap/js/CollapsibleLists.js"> </script>
       <script type="text/javascript" src="/opendap/js/dap4_buttons.js"> </script>
       <script type="text/javascript">
-                    DAP4_URL = new dap4_url("@DAP_SERVICE@/data/nc/zero_length_array.nc");
+                    DAP4_URL = new dap4_url("@HYRAX_ENDPOINT_URL@/hyrax/data/nc/zero_length_array.nc");
                 </script>
       <title>DAP4 Data Request Form (beta)zero_length_array.nc</title>
    </head>
@@ -83,7 +83,7 @@
                </td>
                <td>
                   <input name="url" type="text" style="width:98%;margin-left:10;"
-                         value="@DAP_SERVICE@/data/nc/zero_length_array.nc"/>
+                         value="@HYRAX_ENDPOINT_URL@/hyrax/data/nc/zero_length_array.nc"/>
                </td>
             </tr>
             <tr>

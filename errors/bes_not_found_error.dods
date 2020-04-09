@@ -1,2 +1,2 @@
-url = @DAP_SERVICE@/data/nc/fnoc1.nc.dods?error(5)
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/fnoc1.nc.dods?error(5)
 -s

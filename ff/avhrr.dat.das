@@ -1,2 +1,2 @@
-url = @DAP_SERVICE@/data/ff/avhrr.dat.das
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/ff/avhrr.dat.das
 -s

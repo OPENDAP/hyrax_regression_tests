@@ -1,2 +1,2 @@
-url = @DAP_SERVICE@/data/nc/fnoc1.nc.dmr?dap4.ce=k
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/fnoc1.nc.dmr?dap4.ce=k
 -s 

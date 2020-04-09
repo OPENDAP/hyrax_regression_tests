@@ -1,2 +1,2 @@
-url = @DAP_SERVICE@/data/nc/coads_climatology.nc.dods?geogrid(SST,61,-82,38,-19)
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/coads_climatology.nc.dods?geogrid(SST,61,-82,38,-19)
 -s
