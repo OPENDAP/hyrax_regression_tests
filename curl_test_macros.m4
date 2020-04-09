@@ -51,7 +51,7 @@ dnl the host name in the baselines was replaced with a consistent symbol and mak
 dnl that symbol was, in turn, used in the response text compared to the baselines.
 
 m4_define([PATCH_SERVER_NAME], [dnl
-    sed "s+$DAP_SERVICE+@DAP_SERVICE@+g" < $1 > $1.sed
+    sed "s+$HYRAX_ENDPOINT_URL+@HYRAX_ENDPOINT_URL@+g" < $1 > $1.sed
     mv $1.sed $1
 ])
 
