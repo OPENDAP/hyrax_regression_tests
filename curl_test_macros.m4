@@ -53,7 +53,9 @@ dnl the host name in the baselines was replaced with a consistent symbol and mak
 dnl that symbol was, in turn, used in the response text compared to the baselines.
 
 m4_define([PATCH_SERVER_NAME], [dnl
-    sed "s+$HYRAX_ENDPOINT_URL+@HYRAX_ENDPOINT_URL@+g" < $1 > $1.sed
+    HTTPS_URL=`echo $HYRAX_ENDPOINT_URL | sed -e "s+http://+https://+g"`
+    HTTP_URL=`echo $HYRAX_ENDPOINT_URL | sed -e "s+https://+http://+g"`
+    sed -e "s+$HTTP_URL+@HYRAX_ENDPOINT_URL@+g" -e "s+$HTTPS_URL+@HYRAX_ENDPOINT_URL@+g"  < $1 > $1.sed
     mv $1.sed $1
 ])
 
@@ -231,7 +233,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
     baseline=$abs_srcdir/$1.baseline
 
     dnl Made this use the PID because parallel tests might overwrite data if using the
-    dnl same file name. I'm not sure autotest is smart enough to recognize that situation
+    dnl same file name. I''m not sure autotest is smart enough to recognize that situation
     dnl for an arbitrary file. It does seem to delete the file.
     http_header=http_header$$
 
@@ -278,7 +280,7 @@ m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
     input=$abs_srcdir/$1
 
     dnl Made this use the PID because parallel tests might overwrite data if using the
-    dnl same file name. I'm not sure autotest is smart enough to recognize that situation
+    dnl same file name. I''m not sure autotest is smart enough to recognize that situation
     dnl for an arbitrary file. It does seem to delete the file.
     http_header=http_header$$
 
