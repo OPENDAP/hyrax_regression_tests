@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/ff/gsodock.dat.info
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/ff/gsodock.dat.info
 -s

@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/hdf4/S2000415.HDF.gz.info
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/hdf4/S2000415.HDF.gz.info
 -s

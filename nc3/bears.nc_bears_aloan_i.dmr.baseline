@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xml:base="http://@SERVER@/opendap/data/nc/bears.nc" dapVersion="4.0" dmrVersion="1.0" name="bears.nc">
+<Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xml:base="@HYRAX_ENDPOINT_URL@/hyrax/data/nc/bears.nc" dapVersion="4.0" dmrVersion="1.0" name="bears.nc">
     <Dimension name="i" size="2"/>
     <Dimension name="j" size="3"/>
     <Int32 name="i">

@@ -1,2 +1,2 @@
-url = http://localhost:8080/opendap/wcs/coads/data/nc/coads_climatology.nc?service=WCS&request=GetCapabilities
+url = @HYRAX_ENDPOINT_URL@/wcs/coads/data/nc/coads_climatology.nc?service=WCS&request=GetCapabilities
 -s

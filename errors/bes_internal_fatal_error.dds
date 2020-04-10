@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/nc/fnoc1.nc.dds?error(2)
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/fnoc1.nc.dds?error(2)
 -s

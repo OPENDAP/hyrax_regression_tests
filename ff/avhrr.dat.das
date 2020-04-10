@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/ff/avhrr.dat.das
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/ff/avhrr.dat.das
 -s

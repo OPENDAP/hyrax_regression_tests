@@ -1,2 +1,2 @@
-url = http://@SERVER@/opendap/data/nc/zero_length_array.nc.ascii
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/zero_length_array.nc.ascii
 -s

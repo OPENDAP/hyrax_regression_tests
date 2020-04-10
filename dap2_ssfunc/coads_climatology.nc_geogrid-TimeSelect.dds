@@ -1,6 +1,6 @@
 # In test URL below, parameters are encoded to be allowed by Tomcat instances fixed for CVE-2016-6816.
-# url = http://@SERVER@/opendap/data/nc/coads_climatology.nc.dds?geogrid(SST,61,-82,38,-19,"TIME<1500")
-url = http://@SERVER@/opendap/data/nc/coads_climatology.nc.dds
+# url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/coads_climatology.nc.dds?geogrid(SST,61,-82,38,-19,"TIME<1500")
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/coads_climatology.nc.dds
 --data-urlencode "geogrid(SST,61,-82,38,-19,\"TIME<1500\")"
 -G
 -s

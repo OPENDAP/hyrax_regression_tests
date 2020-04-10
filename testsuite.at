@@ -429,7 +429,7 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(errors/BadConstraintSyntax.dap.csv)
 # Incompatible Media Type (Asking the server for something it cannot 
 # produce)
 # -- w10n response
-AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(errors/IncompatibleMediaType.w10n)
+AT_CURL_HTTP_HEADER_TEST(errors/IncompatibleMediaType.w10n)
 
 
 
@@ -614,7 +614,7 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_timeout_error.json)
 
 ####################################################
 # TestName: wcs/bes_forbidden_error
-AT_CURL_RESPONSE_TEST(wcs-2.0/coads_climatology.nc.GetCapabilities, xfail)
+AT_CURL_RESPONSE_TEST(wcs-2.0/coads_climatology.nc.GetCapabilities)
 AT_CURL_RESPONSE_TEST(wcs-2.0/coads_climatology.nc.DescribeCoverage_00)
 AT_CURL_RESPONSE_TEST(wcs-2.0/coads_climatology.nc.DescribeCoverage_01)
 AT_CURL_DAP2_DATA_RESPONSE_TEST(wcs-2.0/coads_climatology.nc.GetCoverage)
