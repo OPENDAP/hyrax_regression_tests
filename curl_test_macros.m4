@@ -246,10 +246,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
             curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         dnl REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
-        dnl Initialize the $baseline.http_header.tmp file with cntl-c, then put the first
-        dnl 'header' (HTTP/1.1 <code>) in there, substituting '\.' for '.'
         AT_CHECK([head -1 $http_header | tr -d '\r' > $input.http_header.tmp])
-        dnl AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         ],
         [
         AT_CHECK([
@@ -348,7 +345,6 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
             curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
-        dnl AT_CHECK([echo "^\c" > $baseline.http_header.tmp; head -1 $http_header | sed "s/\./\\\./g" >> $baseline.http_header.tmp])
         AT_CHECK([head -1 $http_header | tr -d '\r' > $input.http_header.tmp])
         ],
         [
