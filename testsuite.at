@@ -442,7 +442,7 @@ AT_CURL_HTTP_HEADER_TEST(errors/IncompatibleMediaType.w10n)
 #
 # -- DAP2
 
-AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR_ERROR(errors/bes_internal_error.dds)
+AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_error.dds)
 AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_error.ascii)
 AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_error.dods)
 #
