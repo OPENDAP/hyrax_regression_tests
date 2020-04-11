@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xml:base="@HYRAX_ENDPOINT_URL@/hyrax/data/ff/gsodock.dat" dapVersion="4.0" dmrVersion="1.0" name="gsodock.dat">
     <Sequence name="URI_GSO-Dock">
-        <Float32 name="Depth"/>
-        <Float32 name="Air_Temp"/>
+        <Float32 name="Depth">
+            <Attribute name="units" type="String">
+                <Value>m</Value>
+            </Attribute>
+        </Float32>
+        <Float32 name="Air_Temp">
+            <Attribute name="units" type="String">
+                <Value>degC</Value>
+            </Attribute>
+        </Float32>
     </Sequence>
     <Attribute name="FF_GLOBAL" type="Container">
         <Attribute name="Server" type="String">
@@ -10,6 +18,23 @@
         </Attribute>
         <Attribute name="text" type="String">
             <Value>Time    Dep     Temp    Sal     DO%     pH      Turb    AirT    WndSpd  WndDir  Baro    Solar</Value>
+        </Attribute>
+        <Attribute name="location" type="String">
+            <Value>University of Rhode Island/Oceanography School dock</Value>
+        </Attribute>
+        <Attribute name="latitude" type="Float32">
+            <Value>41.4926</Value>
+        </Attribute>
+        <Attribute name="longitude" type="Float32">
+            <Value>-71.4201</Value>
+        </Attribute>
+        <Attribute name="start_date" type="String">
+            <Value>19 June 1996</Value>
+        </Attribute>
+    </Attribute>
+    <Attribute name="DO " type="Container">
+        <Attribute name="units" type="String">
+            <Value>pct</Value>
         </Attribute>
     </Attribute>
 </Dataset>
