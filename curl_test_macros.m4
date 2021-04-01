@@ -85,7 +85,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
     input=$abs_srcdir/$1
     baseline=$abs_srcdir/$1.baseline
-    echo "edl_auth_token: $EDL_AUTH_TOKEN"
+    echo "edl_auth_token: '$EDL_AUTH_TOKEN'"
     
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
