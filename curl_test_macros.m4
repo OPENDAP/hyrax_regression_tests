@@ -32,6 +32,11 @@ AT_ARG_OPTION_ARG([netrc],
     [echo "netrc file set to: $at_arg_netrc"; CURL_NETRC_FILE=$at_arg_netrc],
     [echo "netrc file using default: ~/.netrc"; CURL_NETRC_FILE=~/.netrc])
 
+AT_ARG_OPTION_ARG([token],
+    [--token=edl_auth_token Run the various tests (DAP2/4, w10n,
+    wcs, etc.) against the Hyrax instance passing the EDL Authorization Bearer token.],
+    [echo "edl_auth_token set to: $at_arg_token"; EDL_AUTH_TOKEN=$at_arg_token])
+
 dnl We need to remove the Date: HTTP header from both baselines and responses
 dnl since it varies over time.
 
@@ -80,12 +85,13 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
     input=$abs_srcdir/$1
     baseline=$abs_srcdir/$1.baseline
-
+    echo "edl_auth_token: $EDL_AUTH_TOKEN"
+    
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -H $EDL_AUTH_TOKEN -L -K -],
             [0], [stdout])
         PATCH_HYRAX_RELEASE([stdout])
         PATCH_SERVER_NAME([stdout])
@@ -94,7 +100,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -H $EDL_AUTH_TOKEN -L -K -],
             [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])
 	    PATCH_SERVER_NAME([stdout])
