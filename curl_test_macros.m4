@@ -91,7 +91,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -H $EDL_AUTH_TOKEN -L -K -],
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -H \"$EDL_AUTH_TOKEN\" -L -K -],
             [0], [stdout])
         PATCH_HYRAX_RELEASE([stdout])
         PATCH_SERVER_NAME([stdout])
@@ -100,7 +100,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -H $EDL_AUTH_TOKEN -L -K -],
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -H \"$EDL_AUTH_TOKEN\" -L -K -],
             [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])
 	    PATCH_SERVER_NAME([stdout])
