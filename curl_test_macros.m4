@@ -30,7 +30,7 @@ AT_ARG_OPTION_ARG([hyraxurl],
 AT_ARG_OPTION_ARG([netrc],
     [--netrc=netrc_file_name Run tests using the specified netrc file (ala cURL). (default: ~/.netrc)],
     [echo "netrc file set to: $at_arg_netrc"; CURL_NETRC_FILE=$at_arg_netrc],
-    [echo "netrc file using default: ~/.netrc"; CURL_NETRC_FILE=~/.netrc])
+    [echo "netrc file using default: ~/.netrc"; CURL_NETRC_FILE=""])
 
 AT_ARG_OPTION_ARG([token],
     [--token=edl_auth_token Run the various tests (DAP2/4, w10n,
@@ -91,7 +91,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file ${EDL_AUTH_TOKEN} -L -K -],
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file ${EDL_AUTH_TOKEN} -L -K -],
             [0], [stdout])
         PATCH_HYRAX_RELEASE([stdout])
         PATCH_SERVER_NAME([stdout])
@@ -100,7 +100,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file $EDL_AUTH_TOKEN -L -K -],
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file $EDL_AUTH_TOKEN -L -K -],
             [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])
 	    PATCH_SERVER_NAME([stdout])
@@ -131,7 +131,7 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
             getdap -Ms -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
@@ -139,7 +139,7 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
             getdap -Ms -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
@@ -169,7 +169,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
             getdap4 -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
@@ -177,7 +177,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
             getdap4 -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
@@ -207,14 +207,14 @@ m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -], [0], [stdout])
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -], [0], [stdout])
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([grep -f $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
@@ -249,7 +249,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         dnl REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
         AT_CHECK([head -1 $http_header | tr -d '\r' > $input.http_header.tmp])
@@ -257,7 +257,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         dnl REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_CHECK([grep -E -f $input.http_header $http_header], [0], [ignore])
@@ -293,7 +293,7 @@ m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K - > /dev/null], [0], [ignore])
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K - > /dev/null], [0], [ignore])
 
         dnl The first line of the headers is the HTTP return status.
         dnl Remove the CR from the CRLF pair so that grep can use the line for a string/pattern match.
@@ -303,7 +303,7 @@ m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
 
         dnl -F: test strings, not patterns. This test just looks for the HTTP response code.
         AT_CHECK([grep -E -f $input.http_header $http_header], [0], [ignore])
@@ -348,7 +348,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([mv stdout $baseline.tmp])
         AT_CHECK([head -1 $http_header | tr -d '\r' > $input.http_header.tmp])
@@ -357,7 +357,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
         AT_SKIP_IF([test x$besdev = xno])
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
+            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -D $http_header -K -], [0], [stdout])
         REMOVE_DATE_HEADER([$http_header])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_CHECK([grep -E -f $input.http_header $http_header], [0], [ignore])
