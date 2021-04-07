@@ -85,13 +85,19 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
     input=$abs_srcdir/$1
     baseline=$abs_srcdir/$1.baseline
-    echo "edl_auth_token: '$EDL_AUTH_TOKEN'"
-    
+    echo "##################################################################"
+    echo "# AT_CURL_RESPONSE_TEST"
+    echo "#"
+    echo "edl_auth_token: '${EDL_AUTH_TOKEN}'"
+
+    curl_command="curl -c ${abs_builddir}/cookies_file -b ${abs_builddir}/cookies_file ${EDL_AUTH_TOKEN} -L -K -";
+    echo "curl_command: ${curl_command}";
+
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file ${EDL_AUTH_TOKEN} -L -K -],
+            ${curl_command} ],
             [0], [stdout])
         PATCH_HYRAX_RELEASE([stdout])
         PATCH_SERVER_NAME([stdout])
@@ -100,7 +106,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
-            curl -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file $EDL_AUTH_TOKEN -L -K -],
+            ${curl_command} ],
             [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])
 	    PATCH_SERVER_NAME([stdout])
