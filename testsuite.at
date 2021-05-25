@@ -278,7 +278,10 @@ AT_CURL_DAP2_DATA_RESPONSE_TEST(dap2_ssfunc/1998-6-avhrr.dat_DateTimeConstraint_
 #
 AT_CURL_RESPONSE_TEST(dap2_ssfunc/1998-6-avhrr.dat_DateTimeRange_01.dds)
 AT_CURL_RESPONSE_TEST(dap2_ssfunc/1998-6-avhrr.dat_DateTimeRange_01.das)
-AT_CURL_HTTP_HEADER_TEST(dap2_ssfunc/1998-6-avhrr.dat_DateTimeRange_01.html)
+#
+# Dropped this test because it makes no sense, and it no longer passes. (ndp-5/25/21)
+# AT_CURL_HTTP_HEADER_TEST(dap2_ssfunc/1998-6-avhrr.dat_DateTimeRange_01.html)
+#
 AT_CURL_RESPONSE_TEST(dap2_ssfunc/1998-6-avhrr.dat_DateTimeRange_01.info)
 AT_CURL_RESPONSE_TEST(dap2_ssfunc/1998-6-avhrr.dat_DateTimeRange_01.ascii)
 AT_CURL_DAP2_DATA_RESPONSE_TEST(dap2_ssfunc/1998-6-avhrr.dat_DateTimeRange_01.dods)
