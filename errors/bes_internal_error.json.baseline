@@ -1,17 +1,19 @@
 {
-  "name":  =  "ERROR",
-  "type":  =  "node",
-  "attributes":  =  "[]",
-  "leaves":  =  ["
+  "name":  "ERROR",
+  "type":  "node",
+  "attributes": "[]",
+  "leaves":  [
     {
-      "name":  =  "Message",
-      "type":  =  "String",
-      "attributes":  =  "[]",
-      "data":  =  "A BESInternalError was requested."
+      "name": "Message",
+      "type": "String",
+      "attributes": "[]",
+      "data": "A BESInternalError was requested."
     },
-      "name":  =  "HttpStatus",
-      "type":  =  "Int32",
-      "attributes":  =  "[]",
-      "data":  =  500
+    {
+      "name": "HttpStatus",
+      "type": "Int32",
+      "attributes": "[]",
+      "data": 500
     }
+  ]
 }

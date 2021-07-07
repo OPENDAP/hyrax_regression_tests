@@ -1,17 +1,19 @@
 {
-  "name":  =  "ERROR",
-  "type":  =  "node",
-  "attributes":  =  "[]",
-  "leaves":  =  ["
+  "name":  "ERROR",
+  "type":  "node",
+  "attributes": "[]",
+  "leaves":  [
     {
-      "name":  =  "Message",
-      "type":  =  "String",
-      "attributes":  =  "[]",
-      "data":  =  "Failed to read data: Constraint expression parse error: syntax error"
+      "name": "Message",
+      "type": "String",
+      "attributes": "[]",
+      "data": "Failed to read data: Constraint expression parse error: syntax error"
     },
-      "name":  =  "HttpStatus",
-      "type":  =  "Int32",
-      "attributes":  =  "[]",
-      "data":  =  400
+    {
+      "name": "HttpStatus",
+      "type": "Int32",
+      "attributes": "[]",
+      "data": 400
     }
+  ]
 }
