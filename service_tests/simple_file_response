@@ -1,0 +1,2 @@
+url = @HYRAX_ENDPOINT_URL@/hyrax/data/README
+-s

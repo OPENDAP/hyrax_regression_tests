@@ -5,6 +5,8 @@ AT_TESTED([curl getdap getdap4])
 
 m4_include([curl_test_macros.m4])
 
+AT_CURL_RESPONSE_TEST(service_tests/simple_file_response)
+
 AT_CURL_RESPONSE_TEST(nc3/fnoc1.nc.dds)
 AT_CURL_RESPONSE_TEST(nc3/fnoc1.nc.das)
 AT_CURL_RESPONSE_TEST(nc3/fnoc1.nc.dmr)
