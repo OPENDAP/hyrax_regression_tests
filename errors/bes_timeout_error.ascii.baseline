@@ -1,4 +1,4 @@
 Error { 
-    code = 504;
+    code = 400;
     message = "A BESTimeOutError was requested.";
 }

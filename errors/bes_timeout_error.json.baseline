@@ -13,7 +13,7 @@
       "name": "HttpStatus",
       "type": "Int32",
       "attributes": "[]",
-      "data": 504
+      "data": 400
     }
   ]
 }
