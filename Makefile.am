@@ -2,7 +2,7 @@
 AUTOMAKE_OPTIONS = foreign 
 
 EXTRA_DIST = $(TESTSUITE).at $(TESTSUITE) \
-$(TESTSUITE_DMRPP_BUILDER).at $(TESTSUITER_DMRPP_BUILDER) \
+$(TESTSUITE_DMRPP_BUILDER).at $(TESTSUITE_DMRPP_BUILDER) \
 $(srcdir)/package.m4 atlocal.in curl_test_macros.m4
 
 DISTCLEANFILES = atconfig
@@ -20,7 +20,7 @@ $(srcdir)/package.m4
 
 
 # TODO Check on the cache - is it really used
-check-local: atconfig atlocal $(TESTSUITE)
+check-local: atconfig atlocal $(TESTSUITE) $(TESTSUITE_DMRPP_BUILDER)
 	@echo "Run tests with an empty cache"
 	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
 

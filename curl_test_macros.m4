@@ -27,6 +27,13 @@ AT_ARG_OPTION_ARG([hyraxurl],
     [echo "Hyrax service url set to: $at_arg_hyraxurl"; HYRAX_ENDPOINT_URL=$at_arg_hyraxurl],
     [echo "Hyrax service url using default: http://localhost:8080/opendap"; HYRAX_ENDPOINT_URL=http://localhost:8080/opendap])
 
+AT_ARG_OPTION_ARG([builddmrpp_url],
+    [--builddmrpp_url=builddmrpp-service-endpoint-url Run the various tests (DAP2/4, w10n,
+    wcs, etc.) against the Hyrax instance located at the specified endpoint URL.
+    (default: http://localhost:8080/build_dmrpp)],
+    [echo "BuildDmrpp service url set to: $at_arg_builddmrpp_url"; BUILDDMRPP_ENDPOINT_URL=$at_arg_builddmrpp_url],
+    [echo "BuildDmrpp service url using default: http://localhost:8080/build_dmrpp"; BUILDDMRPP_ENDPOINT_URL=http://localhost:8080/build_dmrpp])
+
 AT_ARG_OPTION_ARG([netrc],
     [--netrc=netrc_file_name Run tests using the specified netrc file (ala cURL). (default: ~/.netrc)],
     [echo "netrc file set to: $at_arg_netrc"; CURL_NETRC_FILE=$at_arg_netrc],
@@ -94,6 +101,43 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
         [
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
+            [0], [stdout])
+	    PATCH_HYRAX_RELEASE([stdout])
+	    PATCH_SERVER_NAME([stdout])
+        AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
+        AT_XFAIL_IF([test "$2" = "xfail"])
+        ])
+
+    AT_CLEANUP
+])
+
+
+# Usage: AT_CURL_BUILDDMRPP_RESPONSE_TEST(test, [xfail|xpass])
+# The baseline for 'test' must be in 'test.baseline'
+# If arg #2 is not given, assume xpass
+
+m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
+
+    AT_SETUP([curl $1])
+    AT_KEYWORDS([text])
+
+    input=$abs_srcdir/$1
+    baseline=$abs_srcdir/$1.baseline
+
+    AS_IF([test -n "$baselines" -a x$baselines = xyes],
+        [
+        AT_CHECK([
+            sed -e "s+@BUILDDMRPP_ENDPOINT_URL@+$BUILDDMRPP_ENDPOINT_URL+g" $input |
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
+            [0], [stdout])
+        PATCH_HYRAX_RELEASE([stdout])
+        PATCH_SERVER_NAME([stdout])
+        AT_CHECK([mv stdout $baseline.tmp])
+        ],
+        [
+        AT_CHECK([
+            sed -e "s+@BUILDDMRPP_ENDPOINT_URL@+$BUILDDMRPP_ENDPOINT_URL+g" $input |
             curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
             [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])

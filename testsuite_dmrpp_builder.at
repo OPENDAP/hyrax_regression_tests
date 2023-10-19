@@ -1,11 +1,10 @@
 # Process with autom4te to create an -*- Autotest -*- test suite.
 
-AT_INIT([bes/modules/dmrpp_module/tests testsuite_dmrpp_builder])
+AT_INIT([hyrax_regression_tests testsuite_dmrpp_builder])
+AT_TESTED([curl])
 
-m4_include([../../common/handler_tests_macros.m4])
+m4_include([curl_test_macros.m4])
 
-dnl - writer - build_dmrpp tests ------------------------------------------
+dnl - build_dmrpp tests ------------------------------------------
 
-# AT_BESCMD_RESPONSE_SCRUB_DATES_TEST([builddmrpp/ghrsst_cmr_dmrpp.dap])
-
-AT_BESCMD_RESPONSE_SCRUB_BES_CONF_LINES_TEST([builddmrpp/ghrsst_cmr_dmrpp.dap])
+AT_CURL_BUILDDMRPP_RESPONSE_TEST(builddmrpp/ghrsst_cmr_dmrpp_response)
