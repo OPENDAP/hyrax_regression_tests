@@ -14,8 +14,9 @@ AUTOM4TE = autom4te
 TESTSUITE = $(srcdir)/testsuite
 $(TESTSUITE): $(TESTSUITE).at $(srcdir)/curl_test_macros.m4 $(srcdir)/package.m4
 
-TESTSUITE_DMRPP_BUILDER = ${srcdir)/testsuite_dmrpp_builder
-$(TESTSUITE_DMRPP_BUILDER): $(TESTSUITE_DMRPP_BUILDER).at $(srcdir)/curl_test_macros.m4 $(srcdir)/package.m4
+TESTSUITE_DMRPP_BUILDER = $(srcdir)/testsuite_dmrpp_builder
+$(TESTSUITE_DMRPP_BUILDER): $(TESTSUITE_DMRPP_BUILDER).at $(srcdir)/curl_test_macros.m4 \
+$(srcdir)/package.m4
 
 
 # TODO Check on the cache - is it really used
