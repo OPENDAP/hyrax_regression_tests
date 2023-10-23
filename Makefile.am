@@ -2,6 +2,7 @@
 AUTOMAKE_OPTIONS = foreign 
 
 EXTRA_DIST = $(TESTSUITE).at $(TESTSUITE) \
+$(TESTSUITE_DMRPP_BUILDER).at $(TESTSUITE_DMRPP_BUILDER) \
 $(srcdir)/package.m4 atlocal.in curl_test_macros.m4
 
 DISTCLEANFILES = atconfig
@@ -11,11 +12,15 @@ DISTCLEANFILES = atconfig
 AUTOM4TE = autom4te
 
 TESTSUITE = $(srcdir)/testsuite
-
 $(TESTSUITE): $(TESTSUITE).at $(srcdir)/curl_test_macros.m4 $(srcdir)/package.m4
 
+TESTSUITE_DMRPP_BUILDER = $(srcdir)/testsuite_dmrpp_builder
+$(TESTSUITE_DMRPP_BUILDER): $(TESTSUITE_DMRPP_BUILDER).at $(srcdir)/curl_test_macros.m4 \
+$(srcdir)/package.m4
+
+
 # TODO Check on the cache - is it really used
-check-local: atconfig atlocal $(TESTSUITE)
+check-local: atconfig atlocal $(TESTSUITE) $(TESTSUITE_DMRPP_BUILDER)
 	@echo "Run tests with an empty cache"
 	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
 
@@ -23,7 +28,7 @@ check-local: atconfig atlocal $(TESTSUITE)
 
 clean-local:
 	test ! -f '$(TESTSUITE)' || $(SHELL) '$(TESTSUITE)' --clean
-	-rm -f $(TESTSUITE) $(srcdir)/package.m4
+	-rm -f $(TESTSUITE) $(TESTSUITE_DMRPP_BUILDER) $(srcdir)/package.m4
 
 AUTOTEST = $(AUTOM4TE) --language=autotest
 

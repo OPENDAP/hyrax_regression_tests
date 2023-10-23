@@ -1,0 +1,10 @@
+# Process with autom4te to create an -*- Autotest -*- test suite.
+
+AT_INIT([hyrax_regression_tests testsuite_dmrpp_builder])
+AT_TESTED([curl])
+
+m4_include([curl_test_macros.m4])
+
+dnl - build_dmrpp tests ------------------------------------------
+
+AT_CURL_BUILDDMRPP_RESPONSE_TEST(builddmrpp/ghrsst_cmr_dmrpp_response)
