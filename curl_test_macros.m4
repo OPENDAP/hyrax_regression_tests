@@ -68,6 +68,39 @@ m4_define([PATCH_SERVER_NAME], [dnl
     mv $1.sed $1
 ])
 
+dnl Given a filename, remove any version string of the form <Value>3.20.9</Value>
+dnl or <Value>libdap-3.20.8</Value> in that file and put "removed version" in its
+dnl place. This hack keeps the baselines more or less true to form without the
+dnl obvious issue of baselines being broken when versions of the software are changed.
+dnl
+dnl Added support for 'dmrpp:version="3.20.9"' in the root node of the dmrpp.
+dnl
+dnl Note that the macro depends on the baseline being a file.
+dnl
+dnl jhrg 12/29/21
+
+m4_define([REMOVE_VERSIONS], [dnl
+    sed -r -e 's@<Value>[[0-9]]*\.[[0-9]]*\.[[0-9]]*</Value>@<Value>removed-version</Value>@g' \
+    -e 's@<Value>[[A-z_.]]*-[[0-9]]*\.[[0-9]]*\.[[0-9]]*</Value>@<Value>removed-version</Value>@g' \
+    -e 's@dmrpp:version="[[0-9]]*\.[[0-9]]*\.[[0-9]]*"@removed-dmrpp:version@g' \
+    -e 's@[[0-9]]+\.[[0-9]]+\.[[0-9]]+(-[[0-9]]+)?@removed-version@g' \
+    < $1 > $1.sed
+    mv $1.sed $1
+])
+
+dnl Remove BES.Catalog.catalog.RootDirectory and BES.module.* from the baseline or returned
+dnl DMR++ response. jhrg 6/12/23
+dnl
+dnl Note: Using '$@' in a macro definition confuses M $@ is replaced with a list of all arguments
+dnl where each argument is quoted ($* does not quote the arguments). So, I switched to using '|'
+dnl as the delimiter for the sed expressions in the macro below. jhrg 6/12/23
+dnl
+m4_define([REMOVE_BES_CONF_LINES], [dnl
+    sed -e 's|^BES\.Catalog\.catalog\.RootDirectory=.*$|removed line|g' \
+        -e 's|^BES\.module\..*=.*$|removed line|g' < $1 > $1.sed
+    mv $1.sed $1
+])
+
 #######################################################################################
 #
 #   CURL TESTS
@@ -122,29 +155,49 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
     AT_SETUP([curl $1])
     AT_KEYWORDS([text])
 
-    input=$abs_srcdir/$1
-    baseline=$abs_srcdir/$1.baseline
+    input="$abs_srcdir/$1"
+    baseline="$abs_srcdir/$1.baseline"
+    curl_cmd=$(sed -e "s+@BUILDDMRPP_ENDPOINT_URL@+$BUILDDMRPP_ENDPOINT_URL+g" $input)
+    cookies_file="$abs_builddir/cookies_file"
+
+    AS_IF([test -z "$at_verbose"], [
+        echo ""
+        echo "# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --"
+        echo "# AT_CURL_BUILDDMRPP_RESPONSE_TEST: BEGIN"
+        echo "#           input: $input"
+        echo "#        baseline: $baseline"
+        echo "# CURL_NETRC_FILE: $CURL_NETRC_FILE"
+        echo "#    cookies_file: $cookies_file"
+        echo "#        curl_cmd: (filtered file contents follow)"
+        echo "$curl_cmd"
+        echo "#"
+    ])
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
         AT_CHECK([
-            sed -e "s+@BUILDDMRPP_ENDPOINT_URL@+$BUILDDMRPP_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
+            echo "$curl_cmd" |
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c "$cookies_file" -b "$cookies_file" -L -K -],
             [0], [stdout])
-        PATCH_HYRAX_RELEASE([stdout])
-        PATCH_SERVER_NAME([stdout])
+        REMOVE_VERSIONS([stdout])
+        REMOVE_BES_CONF_LINES([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
         AT_CHECK([
-            sed -e "s+@BUILDDMRPP_ENDPOINT_URL@+$BUILDDMRPP_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
+            echo "$curl_cmd" |
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c "$cookies_file" -b "$cookies_file" -L -K -],
             [0], [stdout])
-	    PATCH_HYRAX_RELEASE([stdout])
-	    PATCH_SERVER_NAME([stdout])
+	    REMOVE_VERSIONS([stdout])
+	    REMOVE_BES_CONF_LINES([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
         ])
+
+    AS_IF([test -z "$at_verbose"], [
+        echo "# AT_CURL_BUILDDMRPP_RESPONSE_TEST: END"
+        echo "# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --"
+    ])
 
     AT_CLEANUP
 ])
