@@ -124,12 +124,24 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
 
     input=$abs_srcdir/$1
     baseline=$abs_srcdir/$1.baseline
+    target_url=$(sed -e "s+@BUILDDMRPP_ENDPOINT_URL@+$BUILDDMRPP_ENDPOINT_URL+g" $input)
+    cookies_file="$abs_builddir/cookies_file"
+    AS_IF([test -z "$at_verbose"], [
+        echo ""
+        echo "# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --"
+        echo "# AT_CURL_BUILDDMRPP_RESPONSE_TEST: BEGIN"
+        echo "#"
+        echo "# target_url: $target_url"
+        echo "# CURL_NETRC_FILE: $CURL_NETRC_FILE"
+        echo "# cookies_file: $cookies_file"
+        echo "#"
+    ])
 
     AS_IF([test -n "$baselines" -a x$baselines = xyes],
         [
         AT_CHECK([
-            sed -e "s+@BUILDDMRPP_ENDPOINT_URL@+$BUILDDMRPP_ENDPOINT_URL+g" $input |
-            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
+            echo "$target_url" |
+            curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c "$cookies_file" -b "$cookies_file" -L -K -],
             [0], [stdout])
         PATCH_HYRAX_RELEASE([stdout])
         PATCH_SERVER_NAME([stdout])
@@ -137,7 +149,7 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
         ],
         [
         AT_CHECK([
-            sed -e "s+@BUILDDMRPP_ENDPOINT_URL@+$BUILDDMRPP_ENDPOINT_URL+g" $input |
+            echo "$target_url" |
             curl --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K -],
             [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])
@@ -145,6 +157,11 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
         ])
+
+    AS_IF([test -z "$at_verbose"], [
+        echo "# AT_CURL_BUILDDMRPP_RESPONSE_TEST: END"
+        echo "# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --"
+    ])
 
     AT_CLEANUP
 ])
