@@ -28,6 +28,7 @@ check-local: atconfig atlocal $(TESTSUITE) $(TESTSUITE_DMRPP_BUILDER)
 
 clean-local:
 	test ! -f '$(TESTSUITE)' || $(SHELL) '$(TESTSUITE)' --clean
+	test ! -f '$(TESTSUITE_DMRPP_BUILDER)' || $(SHELL) '$(TESTSUITE_DMRPP_BUILDER)' --clean
 	-rm -f $(TESTSUITE) $(TESTSUITE_DMRPP_BUILDER) $(srcdir)/package.m4
 
 AUTOTEST = $(AUTOM4TE) --language=autotest

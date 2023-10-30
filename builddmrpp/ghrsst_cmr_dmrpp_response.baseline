@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xmlns:dmrpp="http://xml.opendap.org/dap/dmrpp/1.0.0#" dapVersion="4.0" dmrVersion="1.0" name="20220812010000-OSISAF-L3C_GHRSST-SSTsubskin-GOES16-ssteqc_goes16_20220812_010000-v02.0-fv01.0.nc" dmrpp:href="https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/GOES16-SST-OSISAF-L3C-v1.0/2022/224/20220812010000-OSISAF-L3C_GHRSST-SSTsubskin-GOES16-ssteqc_goes16_20220812_010000-v02.0-fv01.0.nc" dmrpp:version="3.20.13-977">
+<Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xmlns:dmrpp="http://xml.opendap.org/dap/dmrpp/removed-version#" dapVersion="4.0" dmrVersion="1.0" name="20220812010000-OSISAF-L3C_GHRSST-SSTsubskin-GOES16-ssteqc_goes16_20220812_010000-v02.0-fv01.0.nc" dmrpp:href="https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/GOES16-SST-OSISAF-L3C-v1.0/2022/224/20220812010000-OSISAF-L3C_GHRSST-SSTsubskin-GOES16-ssteqc_goes16_20220812_010000-v02.0-fv01.0.nc" dmrpp:version="removed-version">
     <Dimension name="lat" size="2400"/>
     <Dimension name="lon" size="2400"/>
     <Dimension name="time" size="1"/>
@@ -981,7 +981,7 @@
         <Value>grid</Value>
     </Attribute>
     <Attribute name="history" type="String">
-        <Value>METEO-FRANCE GEOSAFO v1.1.8</Value>
+        <Value>METEO-FRANCE GEOSAFO vremoved-version</Value>
     </Attribute>
     <Attribute name="uuid" type="String">
         <Value>DF556788-19E1-11ED-A08A-48DF370DAD10</Value>
@@ -1002,7 +1002,7 @@
         <Value>20220812T011929Z</Value>
     </Attribute>
     <Attribute name="netcdf_version_id" type="String">
-        <Value>4.6.3</Value>
+        <Value>removed-version</Value>
     </Attribute>
     <Attribute name="DODS_EXTRA" type="Container">
         <Attribute name="Unlimited_Dimension" type="String">
@@ -1011,18 +1011,20 @@
     </Attribute>
     <Attribute name="build_dmrpp_metadata" type="Container">
         <Attribute name="build_dmrpp" type="String">
-            <Value>3.20.13-977</Value>
+            <Value>removed-version</Value>
         </Attribute>
         <Attribute name="bes" type="String">
-            <Value>3.20.13-977</Value>
+            <Value>removed-version</Value>
         </Attribute>
         <Attribute name="libdap" type="String">
-            <Value>libdap-3.20.11-211</Value>
+            <Value>libdap-removed-version</Value>
         </Attribute>
         <Attribute name="configuration" type="String">
             <Value>
 # TheBESKeys::get_as_config()
-AllowedHosts=^http(s)?:\/\/.*$
+AllowedHosts=^https?:\/\/localhost(:8080)?\/.*$
+AllowedHosts+=^http:\/\/test\.opendap\.org.*$
+AllowedHosts+=^https:\/\/cmr.(uat\.|sit\.)?earthdata\.nasa\.gov.*$
 BES.CancelTimeoutOnSend=true
 BES.Catalog.CMR.RootDirectory=UNUSED
 BES.Catalog.CMR.TypeMatch=nc:.*\.nc(4)?(\.bz2|\.gz|\.Z)?$;
@@ -1035,7 +1037,7 @@ BES.Catalog.RemoteResources.TypeMatch=unused:unused;
 BES.Catalog.catalog.Exclude=(^\..*$)|(^.*\.das$);
 BES.Catalog.catalog.FollowSymLinks=No
 BES.Catalog.catalog.Include=;
-BES.Catalog.catalog.RootDirectory=/usr/share/hyrax
+removed line
 BES.Catalog.catalog.TypeMatch=h4:.*\.(hdf|HDF|eos|HDFEOS)(\.bz2|\.gz|\.Z)?$;
 BES.Catalog.catalog.TypeMatch+=gdal:.*\.(tif|TIF)$|.*\.grb\.(bz2|gz|Z)?$|.*\.jp2$|.*/gdal/.*\.jpg$;
 BES.Catalog.catalog.TypeMatch+=ff:.*\.dat(\.bz2|\.gz|\.Z)?$;
@@ -1089,14 +1091,14 @@ BES.Memory.GlobalArea.EmergencyPoolSize=1
 BES.Memory.GlobalArea.MaximumHeapSize=20
 BES.Memory.GlobalArea.Verbose=no
 BES.ProcessManagerMethod=multiple
-BES.ServerAdministrator=email:ngap@opendap.org
+BES.ServerAdministrator=email:support@opendap.org
 BES.ServerAdministrator+=organization:OPeNDAP Inc.
 BES.ServerAdministrator+=street:165 NW Dean Knauss Dr.
 BES.ServerAdministrator+=city:Narragansett
 BES.ServerAdministrator+=region:RI
 BES.ServerAdministrator+=postalCode:02882
 BES.ServerAdministrator+=country:US
-BES.ServerAdministrator+=telephone:+1.401.575.4835
+BES.ServerAdministrator+=telephone:+removed-version.4835
 BES.ServerAdministrator+=website:http://www.opendap.org
 BES.ServerPort=10022
 BES.ServerSecure=no
@@ -1108,33 +1110,33 @@ BES.UncompressCache.dir=/var/cache/bes/hyrax_ux
 BES.UncompressCache.prefix=ux_
 BES.UncompressCache.size=500
 BES.User=bes
-BES.module.ascii=/usr/lib64/bes/libascii_module.so
-BES.module.builddmrpp=/usr/lib64/bes/libbuilddmrpp_module.so
-BES.module.cmr=/usr/lib64/bes/libcmr_module.so
-BES.module.csv=/usr/lib64/bes/libcsv_module.so
-BES.module.dap=/usr/lib64/bes/libdap_module.so
-BES.module.dapcmd=/usr/lib64/bes/libdap_xml_module.so
-BES.module.dmrpp=/usr/lib64/bes/libdmrpp_module.so
-BES.module.ff=/usr/lib64/bes/libff_module.so
-BES.module.focovjson=/usr/lib64/bes/libfocovjson_module.so
-BES.module.fojson=/usr/lib64/bes/libfojson_module.so
-BES.module.fonc=/usr/lib64/bes/libfonc_module.so
-BES.module.functions=/usr/lib64/bes/libfunctions_module.so
-BES.module.gateway=/usr/lib64/bes/libgateway_module.so
-BES.module.gdal=/usr/lib64/bes/libgdal_module.so
-BES.module.h4=/usr/lib64/bes/libhdf4_module.so
-BES.module.h5=/usr/lib64/bes/libhdf5_module.so
-BES.module.httpd=/usr/lib64/bes/libhttpd_catalog_module.so
-BES.module.nc=/usr/lib64/bes/libnc_module.so
-BES.module.ncml=/usr/lib64/bes/libncml_module.so
-BES.module.ngap=/usr/lib64/bes/libngap_module.so
-BES.module.reader=/usr/lib64/bes/libdapreader_module.so
-BES.module.s3=/usr/lib64/bes/libs3_reader.so
-BES.module.sample=/usr/lib64/bes/libsample_module.so
-BES.module.ugrid_functions=/usr/lib64/bes/libugrid_functions.so
-BES.module.usage=/usr/lib64/bes/libusage_module.so
-BES.module.w10n=/usr/lib64/bes/libw10n_handler.so
-BES.module.xml_data=/usr/lib64/bes/libxml_data_module.so
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
+removed line
 BES.modules=dap,dapcmd
 BES.modules+=functions
 BES.modules+=h4
@@ -1159,18 +1161,10 @@ BES.modules+=reader
 BES.modules+=focovjson
 BES.modules+=fonc
 BES.modules+=dmrpp
-BES.modules+=cmr
-BES.netrc.file=/etc/bes/ngap_netrc
-CMR.Cache.dir=/tmp/hyrax
-CMR.Cache.prefix=cmr_
-CMR.Cache.size=500
 CMR.Collections=C179003030-ORNL_DAAC
 CMR.Collections+=C1276812863-GES_DISC
-CMR.Collections+=C1276812863-GES_DISC
-CMR.Collections+=C1222931489-GHRC_CLOUD
 CMR.Facets=temporal
 CMR.Reference=http://docs.opendap.org/index.php/BES_-_Modules_-_CMR_Catalog
-CMR.host.url=https://cmr.earthdata.nasa.gov/
 DAP.Async.StyleSheet.Ref=/opendap/xsl/asyncResponse.xsl
 DAP.FunctionResponseCache.path=/tmp/hyrax_func
 DAP.FunctionResponseCache.prefix=func_
@@ -1283,12 +1277,8 @@ NC.UseMDS=false
 NCML.DimensionCache.directory=/tmp/hyrax_ncml
 NCML.DimensionCache.prefix=ncml_
 NCML.DimensionCache.size=2000
-NGAP.Cache.dir=/tmp
-NGAP.Cache.prefix=ngap_
-NGAP.Cache.size=500
 NGAP.UseCMRCache=true
 NGAP.UseDMRppCache=true
-NGAP.cmr_host_url=https://cmr.earthdata.nasa.gov/
 NGAP.inject_data_urls=true
 Say.LogName=@prefix@/var/say.log
 SupportEmail=support@opendap.org
