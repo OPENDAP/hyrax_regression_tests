@@ -101,6 +101,20 @@ m4_define([REMOVE_BES_CONF_LINES], [dnl
     mv $1.sed $1
 ])
 
+dnl Remove BuildDmrpp configuration from the baseline or returned DMR++ response. ndp 11/06/23
+dnl
+m4_define([REMOVE_BUILD_DMRPP_CONFIGURATION_ATTR], [dnl
+    # This sed magic: '1h;2,$H;$!d;g' slurps up the entire file into a single line.
+    # Courtesy of: https://unix.stackexchange.com/users/21763/antak
+    #   Reference: https://unix.stackexchange.com/questions/26284/how-can-i-use-sed-to-replace-a-multi-line-string
+    sed \
+        -e '1h;2,$H;$!d;g' \
+        -e 's@<Attribute name="configuration" type="String">.*</Value>@<Attribute name="Removed(configuration)">@' \
+         < $1 > $1.sed
+    mv $1.sed $1
+])
+
+
 #######################################################################################
 #
 #   CURL TESTS
@@ -181,6 +195,7 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
             [0], [stdout])
         REMOVE_VERSIONS([stdout])
         REMOVE_BES_CONF_LINES([stdout])
+        REMOVE_BUILD_DMRPP_CONFIGURATION_ATTR([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
@@ -190,6 +205,7 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
             [0], [stdout])
 	    REMOVE_VERSIONS([stdout])
 	    REMOVE_BES_CONF_LINES([stdout])
+	    REMOVE_BUILD_DMRPP_CONFIGURATION_ATTR([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
         ])
