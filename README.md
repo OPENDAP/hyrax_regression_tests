@@ -1,7 +1,7 @@
 # Hyrax Regression Tests
 
 Currently these tests depend on:
-* A Hyrax server running on `localhost:8080` (but see the --server opetion)
+* A Hyrax server running on `localhost:8080` (but see the --server option)
 * The programs `getdap` and `getdap4` must be on the PATH
 
 ## Build
