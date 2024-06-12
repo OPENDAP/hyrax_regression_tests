@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if test -d ./testsuite.dir; then 
+    echo "# ERRORS ################################";
+    export dnames=$(find ./testsuite.dir -maxdepth 1 -type d -name [0-9]*);
+    # echo "Failed test dir names: $dnames";
+    for dname in $dnames; do
+        echo "### FAILED TEST: $dname ################";  
+        for fname in http_url https_url stdout testsuite.log; do
+            export target_file="$dname/$fname"
+            echo "###### FILE: $target_file ################";
+            if test -f "$target_file" ; then
+                cat $target_file; 
+            else
+                echo "$target_file does not exist. Nothing to show."
+            fi
+        done; 
+    done; 
+fi
+
