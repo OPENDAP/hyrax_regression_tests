@@ -119,6 +119,15 @@ m4_define([REMOVE_BUILD_DMRPP_CONFIGURATION_ATTR], [dnl
     mv $1.sed $1
 ])
 
+# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+# Remove the build_dmrpp creation time attribute value, an ISO-68601 date string
+# ndp 07/25/24
+# Usage: REMOVE_BUILD_DMRPP_CREATED_ATTR_VALUE(file_name)
+#             <Value>2024-07-25T18:22:54Z</Value>
+m4_define([REMOVE_BUILD_DMRPP_CREATED_ATTR_VALUE], [dnl
+    sed -e 's@<Value>[[0-9]]\{4\}-[[0-9]]\{2\}-[[0-9]]\{2\}T[[0-9]]\{2\}\:[[0-9]]\{2\}\:[[0-9]]\{2\}Z</Value>@<Value>removed date string</Value>@g'  < $1 > $1.sed
+    mv $1.sed $1
+])
 
 #######################################################################################
 #
@@ -200,6 +209,7 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
             [0], [stdout])
         REMOVE_VERSIONS([stdout])
         REMOVE_BES_CONF_LINES([stdout])
+        REMOVE_BUILD_DMRPP_CREATED_ATTR_VALUE([stdout])
         REMOVE_BUILD_DMRPP_CONFIGURATION_ATTR([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
@@ -210,6 +220,7 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
             [0], [stdout])
 	    REMOVE_VERSIONS([stdout])
 	    REMOVE_BES_CONF_LINES([stdout])
+	    REMOVE_BUILD_DMRPP_CREATED_ATTR_VALUE([stdout])
 	    REMOVE_BUILD_DMRPP_CONFIGURATION_ATTR([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
