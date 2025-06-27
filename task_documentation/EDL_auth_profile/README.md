@@ -9,8 +9,8 @@ Steps to reproduce:
 2. To plot the results of the tests, and generate summary statistics, run `julia --project=. analyze.jl`.
 
 Test dependencies:
-- `turl.sh` available on path
-- `~/.edl_tokens`
+- `turl.sh` (included) available on path
+- `edl_tokens_template` filled in with tokens available from `https://urs.earthdata.nasa.gov/users/<your_user_name>/user_tokens`, and saved to `~/.edl_tokens` 
 - `jq` installed
 
 To run more requests than the default 1000, update the loop in `request_fnoc.sh`.
