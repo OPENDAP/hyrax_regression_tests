@@ -12,6 +12,7 @@ Test dependencies:
 - `turl.sh` (included) available on path
 - `edl_tokens_template` filled in with tokens available from `https://urs.earthdata.nasa.gov/users/<your_user_name>/user_tokens`, and saved to `~/.edl_tokens` 
 - `jq` installed
+- [Julia](https://julialang.org/install/) for running the analysis (plotting) script
 
 To run more requests than the default 1000, update the loop in `request_fnoc.sh`.
 
