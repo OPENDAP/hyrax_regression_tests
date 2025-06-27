@@ -51,23 +51,28 @@ function plot_data(df; xlims=(nothing, nothing), title, savepath)
     println("\t- CDF plot saved to $fp")
 
     # Box plot 
-    axis = (; xlabel="Time (s)", title=title * ": Time to return first byte",
+    f = Figure(size=(600, 300))
+    axis = Axis(f[1, 1]; xlabel="Time (s)", title=title * ": Time to return first byte",
         yticks=(1:length(labels), labels),
     )
     categories = map(l -> contains(l, "new") ? 1 : 2, df.source)
-    b = boxplot(categories, df.values;
-        axis,
-        show_notch=true,
+    boxplot!(axis, categories, df.values;
+        range=1.5,
+        # strokecolor=:black,
+        strokewidth=:1,
+        whiskerwidth=0.5,
         orientation=:horizontal,
         show_outliers=false,
         color=colors[categories])
     xlims!(xlims...)
+    textlabel!(axis, Point2f(stats[1, :percentile50], 1); text="*Box denotes interquartile range (IQR)\n*Whiskers span 1.5*IQR", justification=:left)
     fp = replace(savepath, ".png" => "_percentiles.png")
-    save(fp, b)
+    save(fp, f)
     println("\t- Boxplot saved to $fp")
-    # return b
     return stats
 end
+
+
 
 @info "Plotting local data"
 fileset = [("local_hr_keys.txt", "JWKS auth \n(new)"),
@@ -81,3 +86,4 @@ sort!(df, [:source], rev=true)
 stats = plot_data(df; title="Local hyrax (Boston)", savepath="local_hyrax_boston.png")
 plot_data(df; xlims=(0, 0.1), title="Local hyrax (Boston)", savepath="local_hyrax_boston_zoomed.png")
 show(stats)
+
