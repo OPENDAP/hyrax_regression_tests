@@ -18,6 +18,7 @@ function plot_data(df; xlims=(nothing, nothing), title, savepath)
         color=colors[indexin(category_labels, unique(category_labels))])
     xlims!(xlims...)
     save(savepath, p)
+    println("\t- Plot saved to $savepath")
 
     gdf = groupby(df, :source)
     stats = combine(gdf, :values => median => :median,
@@ -41,6 +42,6 @@ for (filename, label) in fileset
         source=label))
 end
 sort!(df, [:source], rev=true)
-p = plot_data(df; title="Local hyrax (Boston)", savepath="local_hyrax_boston.png")
-p = plot_data(df; xlims=(0, 0.1), title="Local hyrax (Boston)", savepath="local_hyrax_boston_zoomed.png")
-save("", p)
+stats = plot_data(df; title="Local hyrax (Boston)", savepath="local_hyrax_boston.png")
+plot_data(df; xlims=(0, 0.1), title="Local hyrax (Boston)", savepath="local_hyrax_boston_zoomed.png")
+show(stats)

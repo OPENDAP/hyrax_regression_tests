@@ -13,6 +13,8 @@ Test dependencies:
 - `~/.edl_tokens`
 - `jq` installed
 
+To run more requests than the default 1000, update the loop in `request_fnoc.sh`.
+
 ## Capture request timing with and without EDL token self-validation
 
 ### Test on a local hyrax deployment
