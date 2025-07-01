@@ -1,0 +1,43 @@
+#!/bin/bash
+
+ahdr="Authorization:"
+
+function edl_prod(){
+    export edl_user="<TODO_REPLACE_WITH_USERNAME>"
+    export edl_token="<TODO_REPLACE_WITH_TOKEN>"
+    export edl_token_type="Bearer";
+    export edl_hdr="${ahdr} ${edl_token_type} ${edl_token}"
+}
+
+function edl_staging(){
+    export edl_user="<TODO_REPLACE_WITH_USERNAME>"
+    export edl_token_type="Bearer";
+    export edl_token="<TODO_REPLACE_WITH_TOKEN>"
+    export edl_hdr="${ahdr} ${edl_token_type} ${edl_token}"
+}
+
+function edl_test(){
+    export edl_user="<TODO_REPLACE_WITH_USERNAME>"
+    export edl_token_type="Bearer";
+    export edl_token="<TODO_REPLACE_WITH_TOKEN>"
+    export edl_hdr="${ahdr} ${edl_token_type} ${edl_token}"
+}
+
+function show_edl_config(){
+    echo "##############################################################"
+    echo "# EDL Configuration"
+    echo "#" 
+    echo "#       edl_user: $edl_user";
+    echo "# edl_token_type: $edl_token_type";
+    echo "#      edl_token: $edl_token";
+    echo "#        edl_hdr: $edl_hdr";
+    echo "#" 
+}
+
+edl_prod
+
+if test -n "$verbose"; then
+    show_edl_config; 
+fi
+
+

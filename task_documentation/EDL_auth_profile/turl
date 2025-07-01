@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source ~/.edl_tokens
+
+export cookies=${cookies:-~/.edl_cookies}
+#if test -n "${verbose}" ; then echo "cookies: ${cookies}" >&2 ; fi
+
+
+if test -n "${verbose}" 
+then
+    curl -w "\n{ \"cURL\": {\"status\": %{http_code}, \"Connect\": %{time_connect}, \"TTFB\": %{time_starttransfer}, \"TotalTime\": %{time_total} } }\n" -c "${cookies}" -b "${cookies}"  -H "${edl_hdr}" $@
+else
+    curl -c "${cookies}" -b "${cookies}" -H "${edl_hdr}" $@
+fi

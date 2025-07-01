@@ -29,3 +29,7 @@ with a server compiled using `--enable-developer` but are useful tests, all the 
 3. There are a number of keywords (-k <word>) that can be used to select groups of
 related tests. For example, `./testsuite -j9 -k html` will run all of the tests that
 get HTML responses. The keywords supported are html, test, error, dods, dap, and header.
+
+## Non-automted regression tests for task documentation
+
+The [`task_documentation`](./task_documentation) directory documents regression tests that were designed to answer specific questions and are not included in the automated test suite. These tests may require additional setup to run locally. See each subdirectory's README for specific context.
