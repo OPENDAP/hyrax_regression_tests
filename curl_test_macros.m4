@@ -134,7 +134,7 @@ m4_define([REMOVE_BUILD_DMRPP_CONFIGURATION_ATTR], [dnl
 
 m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([text])
 
     input=$abs_srcdir/$1
@@ -171,7 +171,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
 m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([text])
 
     input="$abs_srcdir/$1"
@@ -233,7 +233,7 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
 
 m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([dods])
 
     input=$abs_srcdir/$1
@@ -271,7 +271,7 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 
 m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 
-    AT_SETUP([CURL $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([dap])
 
     input=$abs_srcdir/$1
@@ -309,7 +309,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 
 m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([pattern])
 
     input=$abs_srcdir/$1
@@ -346,7 +346,7 @@ m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 
 m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([header])
 
     input=$abs_srcdir/$1
@@ -391,7 +391,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
 m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([html])
 
     input=$abs_srcdir/$1
@@ -449,7 +449,7 @@ m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
 
 m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([error])
 
     input=$abs_srcdir/$1
