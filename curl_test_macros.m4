@@ -282,7 +282,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
             curl $ENABLE_INSECURE --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
-            getdap4 -D -M -s -], [0], [stdout])
+            getdap4 -C -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
@@ -290,7 +290,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
             curl $ENABLE_INSECURE --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
-            getdap4 -D -M -s -], [0], [stdout])
+            getdap4 -C -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])

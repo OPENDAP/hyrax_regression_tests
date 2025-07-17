@@ -7,13 +7,13 @@ if test -d ./testsuite.dir; then
     for dname in $dnames; do
         echo "### FAILED TEST: $dname ################";  
         for fname in http_url https_url stdout testsuite.log; do
-            export target_file="$dname/$fname"
+            export target_file="$dname/$fname";
             echo "###### FILE: $target_file ################";
             if test -f "$target_file" ; then
                 cat $target_file; 
             else
-                echo "$target_file does not exist. Nothing to show."
-            fi
+                echo "$target_file does not exist. Nothing to show.";
+            fi;
         done; 
     done; 
 fi
