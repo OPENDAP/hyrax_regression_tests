@@ -1,2 +1,3 @@
 url = @HYRAX_ENDPOINT_URL@/hyrax/data/hdf4/S2000415.HDF.gz.dap
+--data-urlencode "dap4.checksum=true"
 -s
