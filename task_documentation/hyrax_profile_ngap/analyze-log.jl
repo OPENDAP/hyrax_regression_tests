@@ -4,6 +4,7 @@ using DataFrames
 using JSON3
 using Statistics
 using CairoMakie
+using SankeyMakie
 cd(@__DIR__)     # TODO - don't leave this!!
 
 # log_path = "bes_log.json" # test file!
@@ -119,22 +120,78 @@ _parse_details = (str) -> begin
     return parse(Int, byte_str), parse(Int, chunk_str)
 end
 
-df_sc = filter(:action => contains("SuperChunk"), profile_logs)
-df_sc = select(df_sc,
-    :action => ByRow(a -> contains(a, "Handle") ? "Process" : "Fetch") => :action,
-    :elapsed_us => ByRow(v -> v / 1_000_000) => :sec,
-    :details => ByRow(_parse_details) => [:bytes, :num_chunks])
+let
+    df_sc = filter(:action => contains("SuperChunk"), profile_logs)
+    df_sc = select(df_sc,
+        :action => ByRow(a -> contains(a, "Handle") ? "Process" : "Fetch") => :action,
+        :elapsed_us => ByRow(v -> v / 1_000_000) => :sec,
+        :details => ByRow(_parse_details) => [:bytes, :num_chunks])
 
-title = "SuperChunk handling"
-savepath = "superchunk_scatter.png"
-axis = (; xlabel="Time (s)", title)
-# yticks=(1:length(labels), labels),
-p = scatter(df_sc.sec, df_sc.num_chunks;
-    axis,
-    color=:blue)
-scatter!(df_sc.sec, df_sc.bytes; color=:red)
-save(savepath, p)
-println("\t- Plot saved to $savepath")
-p
+    title = "SuperChunk handling"
+    savepath = "superchunk_scatter.png"
+    axis = (; xlabel="Time (s)", title)
+    # yticks=(1:length(labels), labels),
+    p = scatter(df_sc.sec, df_sc.num_chunks;
+        axis,
+        color=:blue)
+    scatter!(df_sc.sec, df_sc.bytes; color=:red)
+    save(savepath, p)
+    println("\t- Plot saved to $savepath")
+end
 
-# TODO: plot directed graph 
+# Plot sankey
+let
+    # Okay, let's set this up! 
+    df_sankey = let
+        p_logs = select(profile_logs, [:request_id, :action, :start_us, :stop_us, :time])
+        p_logs = filter(:action => !contains("SuperChunk"), p_logs)
+        r1_logs = select(logs["request"], :request_id, :time, :olfs_start_time => ByRow(t -> parse(Int, "$(t)000")) => :start_us)
+        insertcols!(r1_logs, :action => "Request made")
+        r2_logs = select(logs["request"], :request_id, :time,
+            :time => ByRow(t -> parse(Int, "$(t)000000") + 100000000) => :start_us)
+        insertcols!(r2_logs, :action => "Request done") #TODO-this should be gotten from the response logs!! or elsewhere
+        vcat(p_logs, r1_logs, r2_logs; cols=:union)
+    end
+
+    gdf = groupby(df_sankey, :request_id)
+
+    # labels = sort(unique(df_sankey.action))
+    labels = ["Get DMRpp from DAAC bucket",
+              "Get granule record from CMR",
+              "Get signed url from TEA",
+              "Request done",
+              "Request made"]
+
+    connections_mat = zeros(Int, length(labels), length(labels))
+    for df in gdf
+        df = sort(df, :start_us)
+        df = unique(df, :action)
+        i_to = findfirst(==(df.action[1]), labels)
+        for i in 2:nrow(df)
+            i_from = findfirst(==(df.action[i]), labels)
+            connections_mat[i_to, i_from] += 1
+            i_to = i_from
+        end
+        # @info df
+        # throw()
+    end
+    connections = []
+    for i_x in 1:length(labels), i_y in 1:length(labels)
+        v = connections_mat[i_x, i_y]
+        if v > 0
+            push!(connections, (i_x, i_y, v))
+        end
+    end
+
+    display(connections_mat)
+    @info connections labels
+
+    p = sankey(connections;
+        nodelabels=labels,
+        # axis=hidden_axis(),
+        forceorder=:reverse)
+    savepath = "profiling_sankey.png"
+    save(savepath, p)
+    println("\t- Plot saved to $savepath")
+    p
+end

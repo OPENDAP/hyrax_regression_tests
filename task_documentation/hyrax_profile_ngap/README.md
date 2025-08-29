@@ -35,7 +35,7 @@ cat /Users/hrobertson/OPeNDAP/hyrax/build/var/bes.log | /Users/hrobertson/OPeNDA
 cat full_daymet_test.log | /Users/hrobertson/OPeNDAP/hyrax/bes/server/beslog2json.py -t t | jq --slurp > bes_log.json
 
 
-1b. Download the profiling statments from cloudwatch logs
+1b. Download the profiling statments from cloudwatch logs 
 ```
 aws configure  # will prompt for aws credentials
 aws configure set aws_session_token <SESSION_TOKEN>
@@ -46,3 +46,5 @@ aws logs filter-log-events \
 --end-time 1756244560000 \
 --output json > output_log.json
 ```
+
+
