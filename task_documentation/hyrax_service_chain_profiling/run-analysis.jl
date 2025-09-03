@@ -1,5 +1,6 @@
 using Pkg
 Pkg.activate(@__DIR__)
+Pkg.instantiate()
 using DataFrames
 using JSON3
 using Statistics
@@ -46,6 +47,8 @@ end
 #####
 
 function analyze_logs(; log_path, title_prefix="", verbose=false)
+    isfile(log_path) || throw("Input log file not found: `$(log_path)`")
+
     @info "Loading data from $log_path..."
     plot_prefix = replace(log_path, ".json" => "")
     json = JSON3.read(log_path)
