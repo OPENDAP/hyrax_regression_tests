@@ -14,16 +14,15 @@ function plot_profile_rainclouds(df; xlims=(nothing, nothing), title, savepath)
     labels = unique!(select(df, :source)).source
     colors = Makie.wong_colors()
     axis = (; xlabel="Duration [seconds]", title,
-        yticks=(1:length(labels), labels),
-    )
+            yticks=(1:length(labels), labels),)
     p = rainclouds(category_labels, df.values;
-        axis,
-        figure=(size=(800, 400),),
-        cloud_width=0.5,
-        clouds=hist,
-        orientation=:horizontal,
-        hist_bins=2000,
-        color=colors[indexin(category_labels, unique(category_labels))])
+                   axis,
+                   figure=(size=(800, 400),),
+                   cloud_width=0.5,
+                   clouds=hist,
+                   orientation=:horizontal,
+                   hist_bins=2000,
+                   color=colors[indexin(category_labels, unique(category_labels))])
     xlims!(xlims...)
     save(savepath, p)
     println("\t- Plot saved to $savepath")
@@ -71,7 +70,8 @@ function analyze_logs(; log_path, title_prefix="", verbose=false)
     @info "Processing profiling logs..."
     if "timing" in keys(logs)
         df_profiling = filter("timer_name" => startswith("Profile timing"), logs["timing"])
-        logs["timing"] = filter("timer_name" => !startswith("Profile timing"), logs["timing"])
+        logs["timing"] = filter("timer_name" => !startswith("Profile timing"),
+                                logs["timing"])
         if nrow(logs["timing"]) == 0
             delete!(logs, "timing")
         end
@@ -82,7 +82,8 @@ function analyze_logs(; log_path, title_prefix="", verbose=false)
             details = length(sp) == 2 ? last(sp) : ""
             return first(sp), details
         end
-        transform!(df_profiling, :timer_name => ByRow(parse_timer_name) => [:action, :details])
+        transform!(df_profiling,
+                   :timer_name => ByRow(parse_timer_name) => [:action, :details])
         select!(df_profiling, Not(:timer_name))
         logs["profiling"] = df_profiling
     end
@@ -106,7 +107,7 @@ function analyze_logs(; log_path, title_prefix="", verbose=false)
     # Let's do some exploring!
     profile_logs = logs["profiling"]
     transform!(profile_logs,
-        :action => ByRow(a -> replace(a, "Request redirect url" => "Get signed url from TEA", "Request" => "Get", "Handle" => "Process", " unconstrained" => "")) => :action)
+               :action => ByRow(a -> replace(a, "Request redirect url" => "Get signed url from TEA", "Request" => "Get", "Handle" => "Process", " unconstrained" => "")) => :action)
     _add_num_prefix = str -> begin
         str == "Get granule record from CMR" && (return "1. " * str)
         str == "Get DMRpp from DAAC bucket" && (return "2. Get DMR++ from S3")
@@ -122,15 +123,19 @@ function analyze_logs(; log_path, title_prefix="", verbose=false)
     @info "Profile logs summary:" num_unique_requests = length(unique(profile_logs.request_id)) total_log_lines = nrow(profile_logs)
 
     gdf = combine(groupby(profile_logs, :action), nrow => "log count",
-        :elapsed_us => (arr -> median(arr) / 1_000_000) => "median duration [s]",
-        :elapsed_us => (arr -> maximum(arr) / 1_000_000) => "max duration [s]")
+                  :elapsed_us => (arr -> median(arr) / 1_000_000) => "median duration [s]",
+                  :elapsed_us => (arr -> maximum(arr) / 1_000_000) => "max duration [s]")
     display(reverse(gdf))
 
     @info "Generating summary plots..."
     df_sans_superchunks = select(profile_logs, :action => :source,
-        :elapsed_us => ByRow(v -> v / 1_000_000) => :values)
-    plot_profile_rainclouds(df_sans_superchunks; title=title_prefix * "profiling", savepath=plot_prefix * "_profile_raincloud.png", xlims=(nothing, nothing))
-    plot_profile_rainclouds(df_sans_superchunks; title=title_prefix * "profiling (zoomed)", savepath=plot_prefix * "_profile_raincloud_zoomed.png", xlims=(0, 2.5))
+                                 :elapsed_us => ByRow(v -> v / 1_000_000) => :values)
+    plot_profile_rainclouds(df_sans_superchunks; title=title_prefix * "profiling",
+                            savepath=plot_prefix * "_profile_raincloud.png",
+                            xlims=(nothing, nothing))
+    plot_profile_rainclouds(df_sans_superchunks; title=title_prefix * "profiling (zoomed)",
+                            savepath=plot_prefix * "_profile_raincloud_zoomed.png",
+                            xlims=(0, 2.5))
 
     return logs
 end
