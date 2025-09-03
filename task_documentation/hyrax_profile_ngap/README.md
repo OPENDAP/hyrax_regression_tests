@@ -1,50 +1,64 @@
-# Current scratch
+# Log analysis for service-chain profiling
 
-# From unit test run via debugger!
-cat /Users/hrobertson/OPeNDAP/hyrax/bes/HANNAH_bes.log | beslog2json.py -t t > tmp.json;
-cat tmp.json | jq '.|select(."pid"==97868) | select(."timer-name"!=null)' > timers.json
+The scripts in this directory support analyzing and plotting profiling data collected via CloudWatch logs in the NGAP system. They were initially created to support ticket HYRAX-1835.
 
-## Sorted 
-cat timers.json | jq --slurp 'sort_by(."start-us")[] | ."timer-name"' > timers-sorted.json
+The scripts are relatively brittle, as they were written to support this highly specific and controlled profiling case. 
 
-## All not just timers 
-cat tmp.json | jq '.|select(."pid"==97868)' > messages.json
-cat messages.json | jq --slurp 'sort_by(."time")[] | ."timer-name"' > messages-sorted.json
+## 1. Collect log data to be analyzed
 
---------------
+These script(s) can handle logs generated both locally during testing and pulled from CloudWatch.
 
-# From end-to-end via olfs 
-cat /Users/hrobertson/OPeNDAP/hyrax/build/var/bes.log | beslog2json.py -t t > tmp2.json;
-cat tmp2.json | jq '.|select(."pid"==8442) | select(."timer-name"!=null)' > timers2.json
+### Local logs
 
-## Sorted 
-cat timers2.json | jq --slurp 'sort_by(."start-us")[] | ."timer-name"' > timer2-sorted.json
+_Dependency: `jq` installed._
 
-## All not just timers 
-cat tmp2.json | jq '.|select(."pid"==8442)' > messages2.json
-cat messages2.json | jq --slurp 'sort_by(."time")[] | ."timer-name"' > messages2-sorted.json
-
-----
-
-## Pre-processing
-
-1a. Pull out the profiling statements from local log
+To format raw local logs as viable input for the analysis script, do
+```bash
+cat <PATH_TO_BES_LOG.log> | path/to/hyrax/bes/server/beslog2json.py | jq --slurp > bes_log.json
 ```
-cat /Users/hrobertson/OPeNDAP/hyrax/build/var/bes.log | /Users/hrobertson/OPeNDAP/hyrax/bes/server/beslog2json.py | jq --slurp > bes_log.json
-```
-cat full_daymet_test.log | /Users/hrobertson/OPeNDAP/hyrax/bes/server/beslog2json.py -t t | jq --slurp > bes_log.json
 
+Raw `bes` logs will be found at path `~/hyrax/build/var/bes.log`, unless another location has been specifically configured.
 
-1b. Download the profiling statments from cloudwatch logs 
-```
+### CloudWatch logs
+
+To download the CloudWatch logs, after installing the AWS CLI, do
+
+```bash
 aws configure  # will prompt for aws credentials
 aws configure set aws_session_token <SESSION_TOKEN>
 
 aws logs filter-log-events \
---log-group-name hyrax-<foo> \
+--log-group-name <LOG_GROUP_NAME> \
 --start-time 1756242340000 \
 --end-time 1756244560000 \
 --output json > output_log.json
 ```
+
+For NGAP, `LOG_GROUP_NAME` is `hyrax-<DEPLOYMENT_ENV>` for each of the deployment environments.
+
+The start and end times are in miliseconds since the epoch. 
+For ease of calculation, the current time can be determined via `echo $(($(date +%s%N)/1000000))`.
+Alternatively, the `date` command can be used to get a time relative to the current time, e.g. for one day ago, `echo $(($(date -v -1d +%s%N)/1000000))`. Or just use https://currentmillis.com/ ! :)
+
+## 2. Run Analysis
+
+_Dependency: [Julia](https://julialang.org/install/) installed._
+
+```bash
+cd <path/to/hyrax_profile_ngap> # this repo
+
+julia run-analysis.jl <path/to/log.json> <PLOT_TITLE_PREFIX>
+```
+Some summary statistics will be printed to standard out. Plots will be saved next to the log file, using the input log file name with an additional plotting suffix: `<path/to/logs>_<plot_name>.png`. Any existing files of the same output plot name will be overwritten.
+
+For example, 
+```bash
+julia run-analysis.jl ~Downloads/logs_2025-08-29_hyrax-foo.json "FOO "
+```
+will generate plots 
+- `~Downloads/logs_2025-08-29_hyrax-foo_profile_raincloud.png` 
+- `~Downloads/logs_2025-08-29_hyrax-foo_profile_raincloud_zoomed.png`
+
+and the title on each plot will be prefixed with "FOO ". 
 
 
