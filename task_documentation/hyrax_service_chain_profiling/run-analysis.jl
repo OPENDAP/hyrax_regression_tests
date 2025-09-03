@@ -145,5 +145,5 @@ end
 
 # CLI entrypoint
 if abspath(PROGRAM_FILE) == @__FILE__
-    analyze_logs(; log_path=ARGS[1], title_prefix=length(ARGS) > 2 ? ARGS[2] : "")
+    analyze_logs(; log_path=ARGS[1], title_prefix=length(ARGS) > 1 ? ARGS[2] : "")
 end
