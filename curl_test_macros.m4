@@ -143,7 +143,7 @@ m4_define([REMOVE_BUILD_DMRPP_CREATED_ATTR_VALUE], [dnl
 
 m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([text])
 
     input=$abs_srcdir/$1
@@ -180,7 +180,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
 
 m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([text])
 
     input="$abs_srcdir/$1"
@@ -244,7 +244,7 @@ m4_define([AT_CURL_BUILDDMRPP_RESPONSE_TEST], [dnl
 
 m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([dods])
 
     input=$abs_srcdir/$1
@@ -282,7 +282,7 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
 
 m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 
-    AT_SETUP([CURL $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([dap])
 
     input=$abs_srcdir/$1
@@ -293,7 +293,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
             curl $ENABLE_INSECURE --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
-            getdap4 -D -M -s -], [0], [stdout])
+            getdap4 -C -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
@@ -301,7 +301,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
         AT_CHECK([
             sed -e "s+@HYRAX_ENDPOINT_URL@+$HYRAX_ENDPOINT_URL+g" $input |
             curl $ENABLE_INSECURE --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
-            getdap4 -D -M -s -], [0], [stdout])
+            getdap4 -C -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
@@ -320,7 +320,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
 
 m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([pattern])
 
     input=$abs_srcdir/$1
@@ -357,7 +357,7 @@ m4_define([AT_CURL_RESPONSE_PATTERN_MATCH_TEST], [dnl
 
 m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([header])
 
     input=$abs_srcdir/$1
@@ -402,7 +402,7 @@ m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST], [dnl
 
 m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([html])
 
     input=$abs_srcdir/$1
@@ -460,7 +460,7 @@ m4_define([AT_CURL_HTTP_HEADER_TEST], [dnl
 
 m4_define([AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR], [dnl
 
-    AT_SETUP([curl $1])
+    AT_SETUP([cURL $1])
     AT_KEYWORDS([error])
 
     input=$abs_srcdir/$1

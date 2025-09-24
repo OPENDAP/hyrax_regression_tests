@@ -11,15 +11,18 @@ Steps to reproduce:
 Analysis script is brittle; will likely require refactoring for any sort of scripted usage.
 
 Test dependencies:
-- `turl.sh` available on path
-- `~/.edl_tokens`
+- `turl.sh` (included) available on path
+- `edl_tokens_template` filled in with tokens available from `https://urs.earthdata.nasa.gov/users/<your_user_name>/user_tokens`, and saved to `~/.edl_tokens` 
 - `jq` installed
+- [Julia](https://julialang.org/install/) for running the analysis (plotting) script
+
+To run more requests than the default 1000, update the loop in `request_fnoc.sh`.
 
 ## Capture request timing with and without EDL token self-validation
 
 ### 1. Test on a local hyrax deployment
 
-Script was run a machine in Boston, while NOT on a VPN or from an AWS instance; the data file accessed in this (and all preceding) tests lives on a server in the `us-west-2` region.
+Script was run on a machine in Boston, while NOT on a VPN or from an AWS instance; the data file accessed in this (and all preceding) tests lives on a server in the `us-west-2` region.
 
 The following test was run on a local build of the olfs on the master branch (SHA # , i.e., after the changes to support self-validation had merged down), with hyrax client JWKS keys added in `/etc/olfs/user-access.xml`. For the "without self-validation" case, this JWKS was commented out so that the EDL authoraztion was used as a fallback. 
 
