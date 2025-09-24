@@ -41,12 +41,12 @@ For `<TEST_SERVER>`, replaced with name of appropriate test/staging/prod server.
 
 1. Deployed a branch of Hyrax with the correct JWKS injected at deploy time. Then ran:
 ```bash
-./run.sh https://opendap.<TEST_SERVER>.earthdata.nasa.gov <TEST_SERVER>_hr_keys
+./request_fnoc.sh https://opendap.<TEST_SERVER>.earthdata.nasa.gov <TEST_SERVER>_hr_keys
 ```
 
 2. Deployed a branch of Hyrax with the JKWS field name mangled, such that no JWKS keys were injected at deploy time. Then ran:
 ```bash
-./run.sh https://opendap.<TEST_SERVER>.earthdata.nasa.gov <TEST_SERVER>_hr_no_keys
+./request_fnoc.sh https://opendap.<TEST_SERVER>.earthdata.nasa.gov <TEST_SERVER>_hr_no_keys
 ```
 
 When running the analysis script, be sure to pass in the name of the `TEST_SERVER`: 
@@ -71,7 +71,7 @@ turl https://opendap.earthdata.nasa.gov/hyrax/data/nc/fnoc1.nc.dds
 
 3. Access via the script succeeds:
 ```bash
-./run.sh https://opendap.earthdata.nasa.gov _delete1
+./request_fnoc.sh https://opendap.earthdata.nasa.gov _delete1
 ```
 If this fails, make sure your url doesn't end in a slash. If this succeeds, you're good to go on to the server test.
 
