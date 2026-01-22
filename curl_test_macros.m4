@@ -89,6 +89,7 @@ m4_define([REMOVE_VERSIONS], [dnl
     -e 's@<Value>[[A-z_.]]*-[[0-9]]*\.[[0-9]]*\.[[0-9]]*</Value>@<Value>removed-version</Value>@g' \
     -e 's@dmrpp:version="[[0-9]]*\.[[0-9]]*\.[[0-9]]*"@removed-dmrpp:version@g' \
     -e 's@[[0-9]]+\.[[0-9]]+\.[[0-9]]+(-[[0-9]]+)?@removed-version@g' \
+    -e 's@dmrVersion="[[0-9]]*\.[[0-9]]*"@dmrVersion="removed"@g' \
     < $1 > $1.sed
     mv $1.sed $1
 ])
