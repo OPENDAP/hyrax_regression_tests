@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wcs:Capabilities xmlns:wcs="http://www.opengis.net/wcs/2.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wcseo="http://www.opengis.net/wcs/wcseo/1.0" xsi:schemaLocation="http://www.opengis.net/ows/2.0  http://schemas.opengis.net/ows/2.0/owsAll.xsd http://www.opengis.net/wcs/2.0  http://schemas.opengis.net/wcs/2.0/wcsAll.xsd" updateSequence="SomethingBetterWillBeUsedSoon" version="2.0.1">
+<wcs:Capabilities xmlns:wcs="http://www.opengis.net/wcs/2.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wcseo="http://www.opengis.net/wcs/wcseo/1.0" xsi:schemaLocation="http://www.opengis.net/ows/2.0  http://schemas.opengis.net/ows/2.0/owsAll.xsd http://www.opengis.net/wcs/2.0  http://schemas.opengis.net/wcs/2.0/wcsAll.xsd" updateSequence="SomethingBetterWillBeUsedSoon" version="removed-version">
     <ows:ServiceIdentification>
         <ows:Title>OPeNDAP WCS 2.0 Service</ows:Title>
         <ows:Abstract>A WCS 2.0 service under development as a part of the OPeNDAP Hyrax server.</ows:Abstract>
@@ -9,7 +9,7 @@
             <ows:Keyword>NetCDF</ows:Keyword>
         </ows:Keywords>
         <ows:ServiceType>WCS</ows:ServiceType>
-        <ows:ServiceTypeVersion>2.0.1</ows:ServiceTypeVersion>
+        <ows:ServiceTypeVersion>removed-version</ows:ServiceTypeVersion>
         <ows:Profile>http://www.opengis.net/spec/WCS_protocol-binding_soap/1.0/conf/soap</ows:Profile>
         <ows:Profile>http://www.opengis.net/spec/WCS_coverage-encoding_netcdf/1.0/conf/netcdf</ows:Profile>
         <ows:Profile>http://www.opengis.net/spec/WCS_service-model_transaction/1.0/conf/transaction</ows:Profile>

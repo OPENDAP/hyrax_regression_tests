@@ -130,7 +130,7 @@
                                     <div class="small">
                                        <span class="bold">Server:
                         </span>
-                                       <span class="em">DODS FreeFrom based on FFND release 4.2.3</span>
+                                       <span class="em">DODS FreeFrom based on FFND release removed-version</span>
                                     </div>
                                  </li>
                               </ul>
@@ -355,7 +355,7 @@
         {
           "@type": "PropertyValue", 
           "name": "Server", 
-          "value": "DODS FreeFrom based on FFND release 4.2.3"        },
+          "value": "DODS FreeFrom based on FFND release removed-version"        },
         {
           "@type": "PropertyValue", 
           "name": "hours_variable", 

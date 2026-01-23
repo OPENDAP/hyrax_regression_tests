@@ -89,6 +89,7 @@ m4_define([REMOVE_VERSIONS], [dnl
     -e 's@<Value>[[A-z_.]]*-[[0-9]]*\.[[0-9]]*\.[[0-9]]*</Value>@<Value>removed-version</Value>@g' \
     -e 's@dmrpp:version="[[0-9]]*\.[[0-9]]*\.[[0-9]]*"@removed-dmrpp:version@g' \
     -e 's@[[0-9]]+\.[[0-9]]+\.[[0-9]]+(-[[0-9]]+)?@removed-version@g' \
+    -e 's@dmrVersion="[[0-9]]*\.[[0-9]]*"@dmrVersion="removed"@g' \
     < $1 > $1.sed
     mv $1.sed $1
 ])
@@ -157,6 +158,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
             [0], [stdout])
         PATCH_HYRAX_RELEASE([stdout])
         PATCH_SERVER_NAME([stdout])
+        REMOVE_VERSIONS([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
@@ -166,6 +168,7 @@ m4_define([AT_CURL_RESPONSE_TEST], [dnl
             [0], [stdout])
 	    PATCH_HYRAX_RELEASE([stdout])
 	    PATCH_SERVER_NAME([stdout])
+        REMOVE_VERSIONS([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
         ])
@@ -257,6 +260,7 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
             curl $ENABLE_INSECURE --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
             getdap -Ms -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
+        REMOVE_VERSIONS([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
@@ -265,6 +269,7 @@ m4_define([AT_CURL_DAP2_DATA_RESPONSE_TEST],  [dnl
             curl $ENABLE_INSECURE --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
             getdap -Ms -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
+        REMOVE_VERSIONS([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
         ])
@@ -295,6 +300,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
             curl $ENABLE_INSECURE --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
             getdap4 -C -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
+        REMOVE_VERSIONS([stdout])
         AT_CHECK([mv stdout $baseline.tmp])
         ],
         [
@@ -303,6 +309,7 @@ m4_define([AT_CURL_DAP4_DATA_RESPONSE_TEST],  [dnl
             curl $ENABLE_INSECURE --netrc-file $CURL_NETRC_FILE --netrc-optional -c $abs_builddir/cookies_file -b $abs_builddir/cookies_file -L -K - | 
             getdap4 -C -D -M -s -], [0], [stdout])
         PATCH_SERVER_NAME([stdout])
+        REMOVE_VERSIONS([stdout])
         AT_CHECK([diff -b -B $baseline stdout], [0], [ignore])
         AT_XFAIL_IF([test "$2" = "xfail"])
         ])
