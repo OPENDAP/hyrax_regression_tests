@@ -158,7 +158,7 @@
                                     <div class="small">
                                        <span class="bold">Build_ID:
                         </span>
-                                       <span class="em">3.2.1/1996-11-05</span>
+                                       <span class="em">removed/1996-11-05</span>
                                     </div>
                                  </li>
                                  <li>
@@ -3117,7 +3117,7 @@
         {
           "@type": "PropertyValue", 
           "name": "Build_ID", 
-          "value": "3.2.1/1996-11-05"        },
+          "value": "removed/1996-11-05"        },
         {
           "@type": "PropertyValue", 
           "name": "ADEOS_Data_Package_ID", 
