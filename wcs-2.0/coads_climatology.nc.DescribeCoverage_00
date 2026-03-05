@@ -1,2 +1,0 @@
-url = @HYRAX_ENDPOINT_URL@/wcs/coads/data/nc/coads_climatology.nc?service=WCS&version=2.0.1&request=DescribeCoverage
--s
