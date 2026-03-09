@@ -12,16 +12,20 @@ services:
   - docker
 
 before_install:
-  - docker pull opendap/hyrax:snapshot
-  - docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
-  - docker ps -a
   - |
+    echo "Installing libdap from RPMs"
     set -eux
+    pip3 install awscli
     aws s3 cp s3://opendap.travis.build/libdap-build.tar.gz $TRAVIS_BUILD_DIR
     tar -C $HOME -xzvf $TRAVIS_BUILD_DIR/libdap-build.tar.gz
     export LIBDAP_RPM_VERSION=$(grep "libdap4-" libdap4-snapshot | awk '{print $1;}' - | sed "s/libdap4-//g")
     sudo dnf -y install "$TRAVIS_BUILD_DIR/libdap-build.tar.gz"
     set +eux
+    - docker pull opendap/hyrax:snapshot
+  - |
+    echo "Pulling most recent hyrax snapshot image"
+    docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
+    docker ps -a
 
 before_script:
   - autoreconf --force --install --verbose
