@@ -16,10 +16,9 @@ before_install:
     echo "Installing libdap from RPMs"
     set -eux
     pip3 install awscli
-    aws s3 cp s3://opendap.travis.build/libdap-build.tar.gz $TRAVIS_BUILD_DIR --no-sign-request
-    tar -C $HOME -xzvf $TRAVIS_BUILD_DIR/libdap-build.tar.gz
-    export LIBDAP_RPM_VERSION=$(grep "libdap4-" libdap4-snapshot | awk '{print $1;}' - | sed "s/libdap4-//g")
-    sudo dnf -y install "$TRAVIS_BUILD_DIR/libdap-build.tar.gz"
+    LIBDAP_RPM="libdap-3.21.1-99.el8.x86_64"
+    aws s3 cp "${LIBDAP_RPM}.rpm" $TRAVIS_BUILD_DIR --no-sign-request
+    sudo dnf -y install "$LIBDAP_RPM.rpm"
     set +eux
     - docker pull opendap/hyrax:snapshot
   - |
