@@ -7,8 +7,6 @@ language: shell
 branches:
   only:
     - master
-    - travis
-    - hr/16-fix-travis
 
 services:
   - docker
