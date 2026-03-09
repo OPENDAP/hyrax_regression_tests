@@ -20,7 +20,6 @@ before_install:
     aws s3 cp "${LIBDAP_RPM}.rpm" $TRAVIS_BUILD_DIR --no-sign-request
     sudo dnf -y install "$LIBDAP_RPM.rpm"
     set +eux
-    - docker pull opendap/hyrax:snapshot
   - |
     echo "Pulling most recent hyrax snapshot image"
     docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
