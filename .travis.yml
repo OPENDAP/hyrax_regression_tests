@@ -24,9 +24,6 @@ before_install:
     docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
     docker ps -a
 
-before_script:
-  - autoreconf --force --install --verbose
-
 stages:
   - name: test
     if:  branch = master OR branch = travis
@@ -35,6 +32,7 @@ jobs:
   include:
     - stage: test
       script:
+        - autoreconf --force --install --verbose
         - ./configure
         - make check
         - echo "DONE"
