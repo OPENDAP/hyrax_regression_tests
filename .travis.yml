@@ -1,4 +1,4 @@
-dist: trusty
+dist: jammy
 
 language: shell
 
@@ -7,7 +7,6 @@ language: shell
 branches:
   only:
     - master
-    - travis
 
 services:
   - docker
