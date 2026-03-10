@@ -26,7 +26,7 @@ before_install:
 
 stages:
   - name: test
-    if:  branch = master OR branch = travis
+    if: branch = master OR branch = travis
 
 jobs:
   include:
