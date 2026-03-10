@@ -26,15 +26,14 @@ before_install:
 
 before_script:
   - autoreconf --force --install --verbose
-  
+
 stages:
   - name: test
 
 jobs:
   include:
-  - stage: test
-    script: 
-    - ./configure
-    - make check
-    - echo "DONE"
-    
+    - stage: test
+      script:
+        - ./configure
+        - make check
+        - echo "DONE"
