@@ -15,9 +15,8 @@ before_install:
   - |
     echo "Installing libdap from RPMs"
     set -eux
-    pip3 install awscli
-    LIBDAP_RPM="libdap-3.21.1-99.el8.x86_64.rpm"
-    aws s3 cp "s3://opendap.travis.build/${LIBDAP_RPM}" $TRAVIS_BUILD_DIR
+    LIBDAP_RPM="libdap-3.21.1-2.fc44.x86_64.rpm"
+    curl -O "https://rpmfind.net/linux/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/${LIBDAP_RPM}"
     sudo dnf -y install "$LIBDAP_RPM"
     set +eux
   - |
