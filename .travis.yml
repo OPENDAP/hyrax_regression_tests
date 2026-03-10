@@ -1,4 +1,4 @@
-dist: jammy
+dist: trusty
 
 language: shell
 
@@ -7,32 +7,28 @@ language: shell
 branches:
   only:
     - master
+    - travis
 
 services:
   - docker
 
 before_install:
-  - |
-    echo "Installing libdap from RPMs"
-    set -eux
-    LIBDAP_RPM="libdap-3.21.1-2.fc44.x86_64.rpm"
-    curl -O "https://rpmfind.net/linux/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/l/${LIBDAP_RPM}"
-    sudo dnf -y install "$LIBDAP_RPM"
-    set +eux
-  - |
-    echo "Pulling most recent hyrax snapshot image"
-    docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
-    docker ps -a
+  - docker pull opendap/hyrax:snapshot
+  - docker run -d -h hyrax -p 8080:8080 --name=hyrax_container opendap/hyrax:snapshot -n http://localhost:8080
+  - docker ps -a
 
+before_script:
+  - autoreconf --force --install --verbose
+  
 stages:
   - name: test
-    if: branch = master OR branch = travis
+    if:  branch = master OR branch = travis
 
 jobs:
   include:
-    - stage: test
-      script:
-        - autoreconf --force --install --verbose
-        - ./configure
-        - make check
-        - echo "DONE"
+  - stage: test
+    script: 
+    - ./configure
+    - make check
+    - echo "DONE"
+    
