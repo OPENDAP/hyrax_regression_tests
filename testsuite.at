@@ -408,8 +408,6 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(errors/NoSuchVariable.dap)
 #
 # -- Alternate DAP4 encodings
 AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(errors/NoSuchVariable.dap.csv)
-# -- w10n response
-AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(errors/NoSuchVariable.w10n)
 
 
 #   .   .   .   .   .   .   .   .   .   .   .  .   .   .   .   .   .   . 
@@ -433,8 +431,6 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST(errors/BadConstraintSyntax.dap.csv)
 #   .   .   .   .   .   .   .   .   .   .   .  .   .   .   .   .   .   . 
 # Incompatible Media Type (Asking the server for something it cannot 
 # produce)
-# -- w10n response
-AT_CURL_HTTP_HEADER_TEST(errors/IncompatibleMediaType.w10n)
 
 
 
@@ -464,8 +460,6 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_error.json)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_error.dap.csv)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_error.dap.json)
 #
-# -- w10n Response
-#AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_error.w10n)
 
 
 # This last group of tests use the 'debug functions' module and are only
@@ -499,8 +493,6 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_fatal_error.json
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_fatal_error.dap.csv)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_fatal_error.dap.json)
 #
-# -- w10n Response
-#AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_internal_fatal_error.w10n)
 
 ####################################################
 # TestName: errors/bes_syntax_user_error
@@ -527,8 +519,6 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_syntax_user_error.json)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_syntax_user_error.dap.csv)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_syntax_user_error.dap.json)
 #
-# -- w10n Response
-#AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_syntax_user_error.w10n)
 
 ####################################################
 # TestName: errors/bes_forbidden_error
@@ -555,8 +545,6 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_forbidden_error.json)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_forbidden_error.dap.csv)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_forbidden_error.dap.json)
 #
-# -- w10n Response
-#AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_forbidden_error.w10n)
 
 ####################################################
 # TestName: errors/bes_not_found_error
@@ -583,8 +571,6 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_not_found_error.json)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_not_found_error.dap.csv)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_not_found_error.dap.json)
 #
-# -- w10n Response
-#AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_not_found_error.w10n)
 
 
 
@@ -613,7 +599,5 @@ AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_timeout_error.json)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_timeout_error.dap.csv)
 #AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_timeout_error.dap.json)
 #
-# -- w10n Response
-#AT_CURL_RESPONSE_AND_HTTP_HEADER_TEST_ERROR(errors/bes_timeout_error.w10n)
 
 
