@@ -1,3 +1,3 @@
-url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/fnoc1.nc.dap
+url = @HYRAX_ENDPOINT_URL@/data/nc/fnoc1.nc.dap
 --data-urlencode "dap4.checksum=true"
 -s

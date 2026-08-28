@@ -1,2 +1,2 @@
-url = @HYRAX_ENDPOINT_URL@/hyrax/data/README
+url = @HYRAX_ENDPOINT_URL@/data/README
 -s

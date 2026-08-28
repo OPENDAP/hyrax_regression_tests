@@ -1,2 +1,2 @@
-url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/bears.nc.dap.csv
+url = @HYRAX_ENDPOINT_URL@/data/nc/bears.nc.dap.csv
 -s

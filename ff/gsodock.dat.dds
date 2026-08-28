@@ -1,2 +1,2 @@
-url = @HYRAX_ENDPOINT_URL@/hyrax/data/ff/gsodock.dat.dds
+url = @HYRAX_ENDPOINT_URL@/data/ff/gsodock.dat.dds
 -s

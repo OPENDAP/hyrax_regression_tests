@@ -1,2 +1,2 @@
-url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/bears.nc.dods?bears,aloan,i
+url = @HYRAX_ENDPOINT_URL@/data/nc/bears.nc.dods?bears,aloan,i
 -s

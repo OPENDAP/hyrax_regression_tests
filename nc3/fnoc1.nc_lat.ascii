@@ -1,2 +1,2 @@
-url = @HYRAX_ENDPOINT_URL@/hyrax/data/nc/fnoc1.nc.ascii?lat
+url = @HYRAX_ENDPOINT_URL@/data/nc/fnoc1.nc.ascii?lat
 -s

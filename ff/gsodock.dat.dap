@@ -1,3 +1,3 @@
-url = @HYRAX_ENDPOINT_URL@/hyrax/data/ff/gsodock.dat.dap
+url = @HYRAX_ENDPOINT_URL@/data/ff/gsodock.dat.dap
 --data-urlencode "dap4.checksum=true"
 -s
